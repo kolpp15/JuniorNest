@@ -47,5 +47,13 @@ const useJobCardStyle = makeStyles((theme) => ({
 }
 ));
 
+const useViewJobStyle = makeStyles({
+  info: {
+    "& > *": {
+      margin: "5px"
+    },
+  },
+});
 
-export { useSearchBarStyles, useJobCardStyle }
+
+export { useSearchBarStyles, useJobCardStyle, useViewJobStyle }

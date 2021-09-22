@@ -4,14 +4,15 @@ import { Close as CloseIcon } from "@material-ui/icons"
 
 
 const initState = {
-  title: "", // we have to add this
-  position: "Full time", // change this in db
-  remote: "Remote", // need to add this (boolean)
+  title: "", // we have to add this // webdeveloper
+  position: "Full time", // change this in db // full time, part time, contract
+  remote: "Remote", // need to add this (boolean) // remote, in-office
   salary: "",
   skill: "",
   education: "",
   description: "",
   post_date: "",
+  company_id: "mCRVmyjCLM2FPIZ57Dnw"
 }
 
 export default (props) => {
@@ -24,7 +25,11 @@ export default (props) => {
     }));
   }
 
-  const handleSumit = async () => {
+  const handleSubmit = async () => {
+    // for (const field in jobDetails) {
+    //   if (typeof jobDetails[field] === "string"  && !jobDetails[field]) return;
+    // }
+    // if (!jobDetails,skills.length) return; 
     setLoading(true);
     await props.postJob(jobDetails)
     closeModal();
@@ -78,7 +83,6 @@ export default (props) => {
             <FilledInput onChange={handleChange} name="skill" value={jobDetails.skill} placeholder="Required Skills *" disableUnderline fullWidth />
           </Grid>
 
-
           <Grid item xs={6}>
           <Select onChange={handleChange} fullWidth disableUnderline name="remote" value={jobDetails.remote} variant="filled" defaultValue="Remote">
             <MenuItem value="Remote">Remote</MenuItem>
@@ -94,13 +98,17 @@ export default (props) => {
             <FilledInput onChange={handleChange} name="description" value={jobDetails.description} placeholder="Job description *" disableUnderline fullWidth multiline rows={4} />
           </Grid>
 
+          
+            <FilledInput name="company_id" value={jobDetails.company_id} type="hidden" />
+      
+
         </Grid>
       </DialogContent>
 
       <DialogActions>      
         <Box color="red" width="100%" display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="caption">*Required fields</Typography>
-          <Button onClick={handleSumit} variant="contained" disableElevation color="primary" disabled={loading}>
+          <Button onClick={handleSubmit} variant="contained" disableElevation color="primary" disabled={loading}>
             {loading ? (<CircularProgress color="secondary" size={22} />
             ) : (
             "Post Job"
