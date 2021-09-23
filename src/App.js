@@ -17,6 +17,7 @@ export default () => {
   const [customSearch, setCustomSearch] = useState(false);
   const [newJobModal, setNewJobModal] = useState(false);
   const [viewJob, setViewJob] = useState({});
+  
 
   const fetchJobs = async () => {
     setCustomSearch(false);
@@ -64,6 +65,8 @@ export default () => {
       
       <NewJobModal closeModal={() => setNewJobModal(false)} newJobModal={newJobModal} postJob={postJob} />
       <ViewJobModal job={viewJob} closeModal={()=> setViewJob({})} />
+
+
       <Grid container justify="center">
         <Grid item xs={10}>
           <Searchbar fetchJobsCustom={fetchJobsCustom} />

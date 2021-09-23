@@ -1,0 +1,22 @@
+* {box-sizing: border-box;}
+
+  .form-inline {  
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-inline label {
+    margin: 5px 10px 5px 0;
+  }
+
+  .form-inline input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+  }
+
+  .form-new-question {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+  }

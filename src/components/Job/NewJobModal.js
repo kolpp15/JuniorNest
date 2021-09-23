@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons"
-
+import './AddField.css'
+import { AddCircle, RemoveCircle } from "@material-ui/icons"
 
 const initState = {
   title: "", // we have to add this // webdeveloper
@@ -12,17 +13,28 @@ const initState = {
   education: "",
   description: "",
   post_date: "",
-  company_id: "mCRVmyjCLM2FPIZ57Dnw"
+  company_id: "mCRVmyjCLM2FPIZ57Dnw",
+  questions: {}
 }
 
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [jobDetails, setJobDetails] = useState(initState)
+  const [formValues, setFormValues] = useState([{ questions: "" }])
 
+  let questionStorage = {}
+  
   const handleChange = (e) => {
     e.persist();
-    setJobDetails((oldState) => ({...oldState, [e.target.name]: e.target.value,
-    }));
+    if (e.target.name.includes("questions")) {
+      questionStorage[e.target.name] = e.target.value    
+      setJobDetails((oldState) => ({...oldState,
+        ...questionStorage
+      }));
+    } else {
+      setJobDetails((oldState) => ({...oldState, [e.target.name]: e.target.value,
+      }));
+    }
   }
 
   const handleSubmit = async () => {
@@ -31,6 +43,17 @@ export default (props) => {
     // }
     // if (!jobDetails,skills.length) return; 
     setLoading(true);
+
+    let questionsObj = {}
+    for (const question in jobDetails) {
+      if (question.includes("question")) {
+        questionsObj[question] = jobDetails[question]
+        delete jobDetails[question]
+      }
+    }
+    delete questionsObj.questions
+    jobDetails.questions = questionsObj
+
     await props.postJob(jobDetails)
     closeModal();
   }
@@ -39,6 +62,16 @@ export default (props) => {
     setJobDetails(initState)
     setLoading(false)
     props.closeModal()
+  }
+
+  let addFormFields = () => {
+    setFormValues([...formValues, { questions: "" }])
+  }
+
+  let removeFormFields = (i) => {
+      let newFormValues = [...formValues];
+      newFormValues.splice(i, 1);
+      setFormValues(newFormValues)
   }
 
   return (
@@ -77,8 +110,6 @@ export default (props) => {
             <FilledInput onChange={handleChange} name="education" value={jobDetails.education} placeholder="Education Level *" disableUnderline fullWidth />
           </Grid>
 
-
-
           <Grid item xs={6}>
             <FilledInput onChange={handleChange} name="skill" value={jobDetails.skill} placeholder="Required Skills *" disableUnderline fullWidth />
           </Grid>
@@ -100,7 +131,25 @@ export default (props) => {
 
           
             <FilledInput name="company_id" value={jobDetails.company_id} type="hidden" />
-      
+
+          <Grid item xs={12}>
+            {formValues.map((element, index) => (
+              <div className="form-new-question" key={index}>
+                <FilledInput placeholder="Question to Applicants *" fullWidth disableUnderline name={`questions${index}`} value={jobDetails.questions[`questions${index}`]}
+                onChange={handleChange} />
+                {
+                  index===0 ? 
+                  <IconButton onClick={() => addFormFields()}>
+                  <AddCircle />
+                  </IconButton>
+                  : 
+                  <IconButton onClick={() => removeFormFields(index)}>
+                  <RemoveCircle style={{fill:"red"}}/>
+                  </IconButton>               
+                }
+              </div>
+            ))}
+          </Grid>
 
         </Grid>
       </DialogContent>
