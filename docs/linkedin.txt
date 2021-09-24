@@ -1,0 +1,64 @@
+Client ID: 867d5i9imngiy2
+Client Secret: OO9NftddI2kuMyRp
+
+grant_type=(authorization_code)
+code=(code)
+redirect_uri=(URLENCODE(redirectURI))
+urlecncode = https%3A%2F%2Ferminiomendes.com
+
+https://www.linkedin.com/oauth/v2/authorization?response_type=code&state=987654321&scope=r_liteprofile&client_id=867d5i9imngiy2&redirect_uri=https%3A%2F%2Ferminiomendes.com
+
+AQQ5Z14C2WK9EsqH9r-RJGjHPJfy59nvWAQOqOkN7Fdw2hqWnxHkCGCdezok_toc6YeB1iwPyz6P6hYu2h7bT7m1HmeiVaq53EPQTkM-yA7mm-IRsRj-pYBqUwMKJDOuuEuJjcWuNEOnVbdB6_xTdsuLdV6YSL2-XGczV2IC1oDNp-uupMww2Cg_c0KTuEmLKSyVhmd4_kUZk0Bkpmo
+
+
+
+
+
+access_token: AQUHmoslez7qH6P_YFSC4h3aIdJ9nGDmLfkngEZeP7nwXVBPqmTbpYhlpA0uvd7xnxo9p4H-QYOgdDsWwPeOyuiyntyJgE9aS00XrbEe8fPd6OB8-vlK2exlhJ4sn7s-L_ebzJP59vBhlM8Tac0qQa30qfyXrfmotV15ikFXfmZaetkprAKkPAXcxRZ6C6O7MureVutNPCRGkTjO1mxg0TPHOK-vSfDIKs19YZnnh1z9SPfny1uRiIr0FUXTplbBJCrInjpZkSIytGVWJ22jUTh1o8qT198nFy0sKDAkIsPRP6BHumizxU4xLzjmHrIM_Ks_-WneS2EkrXyxHfFRe_N3kITg-g
+
+{
+  "access_token":"AQUHmoslez7qH6P_YFSC4h3aIdJ9nGDmLfkngEZeP7nwXVBPqmTbpYhlpA0uvd7xnxo9p4H-QYOgdDsWwPeOyuiyntyJgE9aS00XrbEe8fPd6OB8-vlK2exlhJ4sn7s-L_ebzJP59vBhlM8Tac0qQa30qfyXrfmotV15ikFXfmZaetkprAKkPAXcxRZ6C6O7MureVutNPCRGkTjO1mxg0TPHOK-vSfDIKs19YZnnh1z9SPfny1uRiIr0FUXTplbBJCrInjpZkSIytGVWJ22jUTh1o8qT198nFy0sKDAkIsPRP6BHumizxU4xLzjmHrIM_Ks_-WneS2EkrXyxHfFRe_N3kITg-g",
+  "expires_in":5183999
+}
+
+curl https://api.linkedin.com/v2/me -H
+"Authorization: Bearer AQUHmoslez7qH6P_YFSC4h3aIdJ9nGDmLfkngEZeP7nwXVBPqmTbpYhlpA0uvd7xnxo9p4H-QYOgdDsWwPeOyuiyntyJgE9aS00XrbEe8fPd6OB8-vlK2exlhJ4sn7s-L_ebzJP59vBhlM8Tac0qQa30qfyXrfmotV15ikFXfmZaetkprAKkPAXcxRZ6C6O7MureVutNPCRGkTjO1mxg0TPHOK-vSfDIKs19YZnnh1z9SPfny1uRiIr0FUXTplbBJCrInjpZkSIytGVWJ22jUTh1o8qT198nFy0sKDAkIsPRP6BHumizxU4xLzjmHrIM_Ks_-WneS2EkrXyxHfFRe_N3kITg-g"
+
+
+
+curl -ik -X POST https://www.linkedin.com/oauth/v2/accessToken \
+-d grant_type=authorization_code \
+-d code=AQQ5Z14C2WK9EsqH9r-RJGjHPJfy59nvWAQOqOkN7Fdw2hqWnxHkCGCdezok_toc6YeB1iwPyz6P6hYu2h7bT7m1HmeiVaq53EPQTkM-yA7mm-IRsRj-pYBqUwMKJDOuuEuJjcWuNEOnVbdB6_xTdsuLdV6YSL2-XGczV2IC1oDNp-uupMww2Cg_c0KTuEmLKSyVhmd4_kUZk0Bkpmo \
+-d redirect_uri=https%3A%2F%2Ferminiomendes.com \
+-d client_id=867d5i9imngiy2 \
+-d client_secret=OO9NftddI2kuMyRp
+
+
+
+
+{
+  "localizedLastName":"Mendes",
+  "profilePicture":{
+    "displayImage":"urn:li:digitalmediaAsset:C5603AQHEoWUpQqVCyQ"
+    },
+    "firstName":{
+      "localized":{
+        "en_US":"Erminio",
+        "pt_BR":"Erminio"
+        },
+        "preferredLocale":{
+          "country":"BR",
+          "language":"pt"
+          }},
+          "lastName":{
+            "localized":{
+              "en_US":"Mendes",
+              "pt_BR":"Mendes"
+              },
+              "preferredLocale":{
+                "country":"BR",
+                "language":"pt"
+                }},
+                "id":"x_UZYZKPYV",
+                "localizedFirstName":"Erminio"
+                }

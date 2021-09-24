@@ -1,0 +1,58 @@
+import { useState, useEffect } from "react";
+import { firestore, app } from "../../Firebase/config";
+
+export default function useApplicationData() {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [customSearch, setCustomSearch] = useState(false);
+  const [newJobModal, setNewJobModal] = useState(false);
+  const [viewJob, setViewJob] = useState({});
+  
+
+  const fetchJobs = async () => {
+    setCustomSearch(false);
+    setLoading(true);
+    const req = await firestore
+      .collection('job_posts')
+      .orderBy('post_date', 'desc')
+      .get();
+    const tempJob = req.docs.map((job) => ({...job.data(), id: job.id, post_date: job.data().post_date.toDate()}));
+    setJobs(tempJob);
+    setLoading(false); 
+  };
+
+  const fetchJobsCustom = async (jobSearch) => {
+    setLoading(true);
+    setCustomSearch(true);
+    const req = await firestore
+      .collection('job_posts')
+      .orderBy('post_date', 'desc')
+      .where("remote", '==', jobSearch.remote)
+      .where("position", '==', jobSearch.position)
+      .get();
+    const tempJob = req.docs.map((job) => ({...job.data(), id: job.id, post_date: job.data().post_date.toDate()}));
+    setJobs(tempJob);
+    setLoading(false); 
+  }
+
+  const postJob = async jobDetails => {
+    await firestore.collection('job_posts').add({
+      ...jobDetails, 
+      post_date: app.firestore.FieldValue.serverTimestamp(), 
+    });
+    fetchJobs();
+  } 
+
+  const postUser = async userDetails => {
+    await firestore.collection('users').add({ ...userDetails });
+    fetchJobs();
+  } 
+  
+  useEffect(() => {
+    fetchJobs();
+  }, [])
+
+
+  return { jobs, setJobs, loading, setLoading, customSearch, setCustomSearch, newJobModal, setNewJobModal, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser }
+
+}

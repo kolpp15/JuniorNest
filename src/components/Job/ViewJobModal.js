@@ -1,25 +1,9 @@
 import React, { useState } from "react";
-import { 
-  Box, 
-  Grid, 
-  FilledInput, 
-  Select, 
-  MenuItem, 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions,
-  makeStyles, 
-  Typography, 
-  Button, 
-  IconButton, 
-  CircularProgress,
-  TextField,
-  DialogContentText
-} from "@material-ui/core";
+import { Box, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { format } from "date-fns";
 import { useViewJobStyle } from '../Helper/StyleHelper';
+import ApplyJobModal from "./ApplyJobModal";
 
 
 
@@ -28,7 +12,6 @@ export default (props) => {
 
   const handleClickOpen = () => {
     setApplyJob(true);
-    
   };
 
   const handleClose = () => {
@@ -52,33 +35,33 @@ export default (props) => {
     <DialogContent>
       <Box>
 
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Job Title: </Typography>
-          <Typography variant="body2">{props.job.title}</Typography>
+        <Box className={classes.info} display="flex" key="job-title">
+          <Typography variant="caption" key="job-title-label">Job Title: </Typography>
+          <Typography variant="body2" key="job-title-field">{props.job.title}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Contract Type: </Typography>
-          <Typography variant="body2">{props.job.position}</Typography>
+        <Box className={classes.info} display="flex" key="contract-type">
+          <Typography variant="caption" key="contract-type-label">Contract Type: </Typography>
+          <Typography variant="body2" key="contract-type-field">{props.job.position}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Location: </Typography>
-          <Typography variant="body2">{props.job.remote}</Typography>
+        <Box className={classes.info} display="flex" key="location">
+          <Typography variant="caption" key="location-label">Location: </Typography>
+          <Typography variant="body2" key="location-field">{props.job.remote}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Skills: </Typography>
-          <Typography variant="body2">{props.job.skill}</Typography>
+        <Box className={classes.info} display="flex" key="skills">
+          <Typography variant="caption" key="skills-label">Skills: </Typography>
+          <Typography variant="body2" key="skills-field">{props.job.skill}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Salary: </Typography>
-          <Typography variant="body2">${props.job.salary}</Typography>
+        <Box className={classes.info} display="flex" key="salary">
+          <Typography variant="caption" key="salary-label">Salary: </Typography>
+          <Typography variant="body2" key="salary-field">${props.job.salary}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Description: </Typography>
-          <Typography variant="body2">{props.job.description}</Typography>
+        <Box className={classes.info} display="flex" key="description">
+          <Typography variant="caption" key="description-label">Description: </Typography>
+          <Typography variant="body2" key="description-field">{props.job.description}</Typography>
         </Box>
-        <Box className={classes.info} display="flex">
-          <Typography variant="caption">Posted On: </Typography>
-          <Typography variant="body2">
+        <Box className={classes.info} display="flex" key="posted-on">
+          <Typography variant="caption" key="post-on-label">Posted On: </Typography>
+          <Typography variant="body2" key="post-on-field">
             {props.job.post_date && format(props.job.post_date, "dd/MMM/yyyy HH:MM")}
           </Typography>
         </Box>
@@ -87,41 +70,11 @@ export default (props) => {
 
     </DialogContent>
     <DialogActions>
-      <Button onClick={handleClickOpen}   variant="outlined">Apply</Button>
+      <Button onClick={handleClickOpen} variant="outlined">Apply</Button>
     </DialogActions>
-   
 
-    
-    <Dialog open={applyJob} onClose={handleClose}>
-      <DialogTitle>Submit Application</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Please answer all the questions the employer is asking
-        </DialogContentText>
-        {/* {props.job["questions"].map((question) => (<TextField  {...question} />))} */}
-        {/* {Object.entries(props.job["questions"]).map((question) => <TextField value={question}/> )}  */}
-        {console.log('these are the questions', props.job["questions"])}
-
-          {/* <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="sample"
-            type="questions"
-            fullWidth
-            variant="standard"
-            />
-            {console.log('questions', props.job.questions)} */}
-
-        
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Submit Application</Button>
-      </DialogActions>
-    </Dialog>
-    
-
+      <ApplyJobModal show={applyJob} close={handleClose} questions={props.job["questions"] } />
+  
   </Dialog>
   );
 };

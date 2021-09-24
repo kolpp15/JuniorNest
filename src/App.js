@@ -1,66 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import theme from "./theme/theme";
+import { Close as CloseIcon } from '@material-ui/icons';
 import { Box, ThemeProvider, Grid, CircularProgress, Button } from "@material-ui/core";
 import Header from "./components/Header/";
 import Searchbar from "./components/Searchbar";
 import JobCard from "./components/Job/JobCard";
 import NewJobModal from "./components/Job/NewJobModal";
-import { firestore, app } from "./Firebase/config";
-import { Close as CloseIcon } from '@material-ui/icons';
 import ViewJobModal from "./components/Job/ViewJobModal";
+import useApplicationData from "./components/Helper/AppHelper";
+import NavBar from "./components/Nav/NavBar";
+
+
+
 
 
 
 export default () => {
-  const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [customSearch, setCustomSearch] = useState(false);
-  const [newJobModal, setNewJobModal] = useState(false);
-  const [viewJob, setViewJob] = useState({});
-  
-
-  const fetchJobs = async () => {
-    setCustomSearch(false);
-    setLoading(true);
-    const req = await firestore
-      .collection('job_posts')
-      .orderBy('post_date', 'desc')
-      .get();
-    const tempJob = req.docs.map((job) => ({...job.data(), id: job.id, post_date: job.data().post_date.toDate()}));
-    setJobs(tempJob);
-    setLoading(false); 
-  };
-
-  const fetchJobsCustom = async (jobSearch) => {
-    setLoading(true);
-    setCustomSearch(true);
-    const req = await firestore
-      .collection('job_posts')
-      .orderBy('post_date', 'desc')
-      .where("remote", '==', jobSearch.remote)
-      .where("position", '==', jobSearch.position)
-      .get();
-    const tempJob = req.docs.map((job) => ({...job.data(), id: job.id, post_date: job.data().post_date.toDate()}));
-    setJobs(tempJob);
-    setLoading(false); 
-  }
-
-  const postJob = async jobDetails => {
-    await firestore.collection('job_posts').add({
-      ...jobDetails, 
-      post_date: app.firestore.FieldValue.serverTimestamp(), 
-    });
-    fetchJobs();
-  } 
-
-  useEffect(() => {
-    fetchJobs();
-  }, [])
-
+  const { jobs, loading, customSearch, newJobModal, setNewJobModal, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob } = useApplicationData();
 
 
   return (
     <ThemeProvider theme={theme}>
+      <NavBar />
+
       <Header openNewJobModal={() => setNewJobModal(true)} />
       
       <NewJobModal closeModal={() => setNewJobModal(false)} newJobModal={newJobModal} postJob={postJob} />

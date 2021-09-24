@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 
-const primary = "#18E1D9";
-const secondary = "#0B0B15";
+const primary = "#637DBB";
+const secondary = "#BDD5EF";
 
 export default createMuiTheme({
   typography: {
@@ -45,5 +45,6 @@ export default createMuiTheme({
         padding: "0px 0 0 10px",
       },
     },
+
   },
 });
