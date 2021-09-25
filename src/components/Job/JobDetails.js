@@ -3,7 +3,7 @@ import { Box, Dialog, DialogTitle, DialogContent, DialogActions, Typography, But
 import { Close as CloseIcon } from "@material-ui/icons";
 import { format } from "date-fns";
 import { useViewJobStyle } from '../Helper/StyleHelper';
-import ApplyJobModal from "./ApplyJobModal";
+import UserApplyJob from "./UserApplyJob";
 
 
 
@@ -73,7 +73,7 @@ export default (props) => {
       <Button onClick={handleClickOpen} variant="outlined">Apply</Button>
     </DialogActions>
 
-      <ApplyJobModal show={applyJob} close={handleClose} questions={props.job["questions"] } />
+      <UserApplyJob show={applyJob} close={handleClose} questions={props.job["questions"] } />
   
   </Dialog>
   );

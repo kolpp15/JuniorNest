@@ -3,6 +3,7 @@ import {Box, Button, Select, MenuItem, CircularProgress} from '@material-ui/core
 import { useSearchBarStyles } from '../Helper/StyleHelper';
 
 
+
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [jobSearch, setJobSearch] = useState({

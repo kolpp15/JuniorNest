@@ -1,7 +1,9 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography, useMediaQuery, Button, useScrollTrigger, Slide, Menu, MenuItem } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography, useMediaQuery, Button, useScrollTrigger, Slide, Menu, MenuItem, Box } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
+import { Link } from 'react-router-dom';
+
 
 // ------------------------------------------------------------------------ HELPER
 
@@ -12,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
     height: "60px"
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    // marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-    marginLeft: theme.spacing(2),
+    // marginLeft: theme.spacing(2),
   },
 
 }));
@@ -47,17 +49,20 @@ const NavBar = (props) => {
     <div className={classes.root}>
       <HideOnScroll {...props}>
 
-          <AppBar elevation={0}>
-
-            <Toolbar bgcolor="secondary.main" style={{ marginLeft: "2rem"}}>
+          <AppBar elevation={0} >
+            
+            <Toolbar bgcolor="secondary.main" style={{ marginLeft: "9rem", marginRight: "9rem"}}>
               <Typography
                 variant="h5"
                 component="p"
                 color="white"
                 className={classes.title}
               >
-                juniorNest
+              <Link to="/" style={{ textDecoration: 'none' }}>juniorNest</Link>
               </Typography>
+
+              
+              
 
               {isMobile ? (
                 <>
@@ -89,7 +94,18 @@ const NavBar = (props) => {
                       onClick={() => setAnchor(null)}
                       style={{color:"#637DBB"}} 
                     >
-                      <Typography variant="h6"> About Us </Typography>
+                      <Typography variant="h6">
+                        <Link to="/about" style={{ textDecoration: 'none' }}>About us</Link>
+                      </Typography>
+                    </MenuItem>
+
+                    <MenuItem
+                      onClick={() => setAnchor(null)}
+                      style={{color:"#637DBB"}} 
+                    >
+                      <Typography variant="h6">
+                        <Link to="/customSearch" style={{ textDecoration: 'none' }}>Search Jobs </Link>
+                      </Typography>
                     </MenuItem>
 
                     <MenuItem
@@ -110,20 +126,29 @@ const NavBar = (props) => {
                 </>
 
               ) : (
-                <div style={{ marginRight: "4rem" }}>
+                <div>
 
                   <Button
                     variant="text"
                     color="white"
                   >
-                    About Us
+                    <Link to="/about" style={{ textDecoration: 'none' }}>About us </Link>
                   </Button>
+
+                  <Button
+                    variant="text"
+                    color="white"
+                  >
+                    <Link to="/customSearch" style={{ textDecoration: 'none' }}>Search Jobs </Link>
+                  </Button>
+
                   <Button
                     variant="text"
                     color="white"
                   >
                     Junior
                   </Button>
+
                   <Button
                     variant="text"
                     color="white"
@@ -133,6 +158,7 @@ const NavBar = (props) => {
                 </div>
               )}
             </Toolbar>
+            
           </AppBar>
 
 

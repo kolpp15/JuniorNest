@@ -42,7 +42,7 @@ export default (props) => {
     //   if (typeof jobDetails[field] === "string"  && !jobDetails[field]) return;
     // }
     // if (!jobDetails,skills.length) return; 
-    setLoading(true);
+    //setLoading(true);
 
     let questionsObj = {}
     for (const question in jobDetails) {
@@ -55,14 +55,9 @@ export default (props) => {
     jobDetails.questions = questionsObj
 
     await props.postJob(jobDetails)
-    closeModal();
+
   }
 
-  const closeModal = () => {
-    setJobDetails(initState)
-    setLoading(false)
-    props.closeModal()
-  }
 
   let addFormFields = () => {
     setFormValues([...formValues, { questions: "" }])
@@ -75,13 +70,13 @@ export default (props) => {
   }
 
   return (
-    <Dialog open={props.newJobModal} fullWidth>
+    <>
+    {/* <Dialog open={props.newJobPost} fullWidth> */}
+
+    
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center"> 
           Post Job
-          <IconButton onClick={closeModal}>
-            <CloseIcon />
-          </IconButton>
         </Box>      
       </DialogTitle>  
 
@@ -94,12 +89,12 @@ export default (props) => {
             value={jobDetails.title}
             autoComplete="off" 
             placeholder="Job title *" 
-            disableUnderline fullWidth 
+            fullWidth 
             />
           </Grid>
 
           <Grid item xs={6}>
-          <Select onChange={handleChange} fullWidth disableUnderline name="position" value={jobDetails.position} variant="filled" defaultValue="Full time">
+          <Select onChange={handleChange} fullWidth name="position" value={jobDetails.position} variant="filled" defaultValue="Full time">
             <MenuItem value="Full time">Full time</MenuItem>
             <MenuItem value="Part time">Part time</MenuItem>
             <MenuItem value="Contract">Contract</MenuItem>
@@ -107,26 +102,26 @@ export default (props) => {
           </Grid>
 
           <Grid item xs={6}>
-            <FilledInput onChange={handleChange} name="education" value={jobDetails.education} placeholder="Education Level *" disableUnderline fullWidth />
+            <FilledInput onChange={handleChange} name="education" value={jobDetails.education} placeholder="Education Level *" fullWidth />
           </Grid>
 
           <Grid item xs={6}>
-            <FilledInput onChange={handleChange} name="skill" value={jobDetails.skill} placeholder="Required Skills *" disableUnderline fullWidth />
+            <FilledInput onChange={handleChange} name="skill" value={jobDetails.skill} placeholder="Required Skills *" fullWidth />
           </Grid>
 
           <Grid item xs={6}>
-          <Select onChange={handleChange} fullWidth disableUnderline name="remote" value={jobDetails.remote} variant="filled" defaultValue="Remote">
+          <Select onChange={handleChange} fullWidth name="remote" value={jobDetails.remote} variant="filled" defaultValue="Remote">
             <MenuItem value="Remote">Remote</MenuItem>
             <MenuItem value="In-Office">In-Office</MenuItem>
           </Select>
           </Grid>
 
           <Grid item xs={6}>
-            <FilledInput onChange={handleChange} name="salary" value={jobDetails.salary} placeholder="Salary" disableUnderline fullWidth />
+            <FilledInput onChange={handleChange} name="salary" value={jobDetails.salary} placeholder="Salary" fullWidth />
           </Grid>
 
           <Grid item xs={12}>
-            <FilledInput onChange={handleChange} name="description" value={jobDetails.description} placeholder="Job description *" disableUnderline fullWidth multiline rows={4} />
+            <FilledInput onChange={handleChange} name="description" value={jobDetails.description} placeholder="Job description *" fullWidth multiline rows={4} />
           </Grid>
 
           
@@ -135,7 +130,7 @@ export default (props) => {
           <Grid item xs={12}>
             {formValues.map((element, index) => (
               <div className="form-new-question" key={index}>
-                <FilledInput placeholder="Question to Applicants *" fullWidth disableUnderline name={`questions${index}`} value={jobDetails.questions[`questions${index}`]}
+                <FilledInput placeholder="Question to Applicants *" fullWidth name={`questions${index}`} value={jobDetails.questions[`questions${index}`]}
                 onChange={handleChange} />
                 {
                   index===0 ? 
@@ -165,6 +160,7 @@ export default (props) => {
           </Button>
         </Box>
       </DialogActions> 
-    </Dialog>
+    {/* </Dialog> */}
+    </>
   );
 };

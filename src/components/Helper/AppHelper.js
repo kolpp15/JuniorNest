@@ -5,7 +5,8 @@ export default function useApplicationData() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [customSearch, setCustomSearch] = useState(false);
-  const [newJobModal, setNewJobModal] = useState(false);
+  const [newJobPost, setNewJobPost] = useState(false);
+  const [newUserProfile, setNewUserProfile] = useState(false);
   const [viewJob, setViewJob] = useState({});
   
 
@@ -53,6 +54,6 @@ export default function useApplicationData() {
   }, [])
 
 
-  return { jobs, setJobs, loading, setLoading, customSearch, setCustomSearch, newJobModal, setNewJobModal, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser }
+  return { jobs, setJobs, loading, setLoading, customSearch, setCustomSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile }
 
 }

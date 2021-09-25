@@ -40,11 +40,14 @@ export default createMuiTheme({
       },
     },
     MuiFilledInput: {
+      root: {
+        backgroundColor: "white",
+      },
       input: {
         height: "49px",
         padding: "0px 0 0 10px",
+        backgroundColor: "white",
       },
     },
-
   },
 });

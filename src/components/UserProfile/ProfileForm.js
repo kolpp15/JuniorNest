@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
+import Upload from "./Upload"
 import { Close as CloseIcon } from "@material-ui/icons"
-import './AddField.css'
-import { storage } from "../../Firebase/firebase";
+
 
 const initState = {
   first_name: "", 
@@ -31,24 +30,16 @@ export default (props) => {
 
   const handleSubmit = async () => {
     setLoading(true);
-    await props.postJob(userDetails)
-    closeModal();
-  }
+    await props.postUser(userDetails)
 
-  const closeModal = () => {
-    setUserDetails(initState)
-    setLoading(false)
-    props.closeModal()
   }
 
   return (
-    <Dialog open={props.newJobModal} fullWidth>
+    <>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center"> 
           User Information
-          <IconButton onClick={closeModal}>
-            <CloseIcon />
-          </IconButton>
+
         </Box>      
       </DialogTitle>  
 
@@ -61,7 +52,7 @@ export default (props) => {
             value={userDetails.title}
             autoComplete="on" 
             placeholder="First Name *" 
-            disableUnderline fullWidth 
+            fullWidth 
             />
           </Grid>
 
@@ -71,7 +62,7 @@ export default (props) => {
             name="last_name" 
             value={userDetails.last_name} 
             placeholder="Last Name *" 
-            disableUnderline fullWidth />
+            fullWidth />
           </Grid>
 
           <Grid item xs={6}>
@@ -80,7 +71,7 @@ export default (props) => {
             name="phone" 
             value={userDetails.phone} 
             placeholder="Phone" 
-            disableUnderline fullWidth />
+            fullWidth />
           </Grid>
 
           <Grid item xs={6}>
@@ -89,7 +80,7 @@ export default (props) => {
             name="email" 
             value={userDetails.email} 
             placeholder="email" 
-            disableUnderline fullWidth />
+            fullWidth />
           </Grid>
 
           <Grid item xs={6}>
@@ -97,8 +88,8 @@ export default (props) => {
             onChange={handleChange} 
             name="skill" 
             value={userDetails.skill} 
-            placeholder="skill" 
-            disableUnderline fullWidth />
+            placeholder="Skills" 
+            fullWidth />
           </Grid>
 
           <Grid item xs={6}>
@@ -107,16 +98,16 @@ export default (props) => {
             name="education" 
             value={userDetails.education} 
             placeholder="Education" 
-            disableUnderline fullWidth />
+            fullWidth />
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <FilledInput 
             onChange={handleChange} 
             name="linkedin" 
             value={userDetails.linkedin} 
-            placeholder="linkedin URL" 
-            disableUnderline fullWidth />
+            placeholder="Linkedin URL" 
+            fullWidth />
           </Grid>
 
           <Grid item xs={12}>
@@ -124,13 +115,16 @@ export default (props) => {
             onChange={handleChange} 
             name="description" 
             value={userDetails.description} 
-            placeholder="User description" 
-            disableUnderline fullWidth multiline rows={4} />
+            placeholder="Summary" 
+            fullWidth multiline rows={4} />
           </Grid>          
           <FilledInput name="user_id" value={userDetails.user_id} type="hidden" />
 
-
-
+          <Grid item xs={12}>
+            <Upload 
+            onChange={handleChange} 
+            />
+          </Grid>
 
         </Grid>
       </DialogContent>
@@ -141,11 +135,11 @@ export default (props) => {
           <Button onClick={handleSubmit} variant="contained" disableElevation color="primary" disabled={loading}>
             {loading ? (<CircularProgress color="secondary" size={22} />
             ) : (
-            "Post Job"
+            "Save"
           )}
           </Button>
         </Box>
       </DialogActions> 
-    </Dialog>
+    </>
   );
 };
