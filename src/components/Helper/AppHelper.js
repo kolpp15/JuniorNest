@@ -9,7 +9,6 @@ export default function useApplicationData() {
   const [newUserProfile, setNewUserProfile] = useState(false);
   const [viewJob, setViewJob] = useState({});
   
-
   const fetchJobs = async () => {
     setCustomSearch(false);
     setLoading(true);
@@ -36,6 +35,20 @@ export default function useApplicationData() {
     setLoading(false); 
   }
 
+  const fetchUniqueJobDetails = async (inputId) => {
+    // setLoading(true);
+    // setCustomSearch(true);
+    const tempJobs = firestore.collection('job_posts').doc(inputId.jobId);
+    const doc = await tempJobs.get();  
+    const tempJob = doc.data()
+    setJobs(tempJob);
+    // setLoading(false);
+ 
+
+  }
+
+
+
   const postJob = async jobDetails => {
     await firestore.collection('job_posts').add({
       ...jobDetails, 
@@ -54,6 +67,6 @@ export default function useApplicationData() {
   }, [])
 
 
-  return { jobs, setJobs, loading, setLoading, customSearch, setCustomSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile }
+  return { jobs, setJobs, loading, setLoading, customSearch, setCustomSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile, fetchUniqueJobDetails }
 
 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
-import Upload from "./Upload"
-import { Close as CloseIcon } from "@material-ui/icons"
+import Upload from "./Upload";
+import { Close as CloseIcon } from "@material-ui/icons";
+// import useApplicationData from "../Helper/AppHelper";
 
 
 const initState = {
@@ -20,6 +21,7 @@ const initState = {
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState(initState)
+  // const { postUser } = useApplicationData();
 
   
   const handleChange = (e) => {

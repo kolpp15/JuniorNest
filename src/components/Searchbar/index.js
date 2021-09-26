@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Box, Button, Select, MenuItem, CircularProgress} from '@material-ui/core';
 import { useSearchBarStyles } from '../Helper/StyleHelper';
-
+import CustomSearch from '../Job/CustomSearch';
 
 
 export default (props) => {
@@ -24,6 +24,7 @@ export default (props) => {
   }
   const classes = useSearchBarStyles();
   return (
+
     <Box p={2} mt={-5} mb={2} className={classes.wrapper}>
       <Select onChange={handleChange} value={jobSearch.position} name="position" disableUnderline variant="filled">
         <MenuItem value="Full time">Full time</MenuItem>

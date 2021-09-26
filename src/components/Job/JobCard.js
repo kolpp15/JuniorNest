@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Box, Typography, Grid, Button } from "@material-ui/core";
 import { useJobCardStyle } from '../Helper/StyleHelper.js';
 import { differenceInBusinessDays } from 'date-fns'
+import { Link, Switch, Route } from 'react-router-dom';
+import JobDetails from "./JobDetails.js";
+import useApplicationData from "../Helper/AppHelper";
 
 
 export default (props) => {
+
+
+
   const classes = useJobCardStyle();
   return (
     <Box p={2} className={classes.wrapper}>
@@ -24,14 +30,20 @@ export default (props) => {
 
           <Grid item>
             <Box mt={2}>
-            <Button onClick={props.open} variant="outlined">Check</Button>
+{/* onClick={props.open} */}
+            <Button variant="outlined">
+              {/* {console.log('thisis props in jobcard', props)} */}
+
+
+              <Link to={`/jobDetails/${props.id}`} style={{ textDecoration: 'none' }} >Check</Link>
+
+            </Button>
+
             </Box>
           </Grid>
-
-
-
         </Grid>
       </Grid>
     </Box>
   )
 }
+

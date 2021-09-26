@@ -4,9 +4,10 @@ import { Close as CloseIcon } from '@material-ui/icons';
 import JobCard from "./JobCard";
 import useApplicationData from "../Helper/AppHelper";
 
+
+
 export default function CustomSearch() {
   const { jobs, loading, customSearch, setViewJob, fetchJobs } = useApplicationData();
-
 
   return (
   <>
@@ -24,9 +25,11 @@ export default function CustomSearch() {
             </Button>
           </Box>
         )}
-      {jobs.map((job) => (<JobCard open={() => setViewJob(job)} key={job.id} {...job} />))}
+      {jobs.map((job) => (<JobCard key={job.id} {...job} />))}
+
       </>
     )} 
+  
   </>  
   )
 }

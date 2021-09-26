@@ -12,7 +12,7 @@ export default (props) => (
           <Box display="flex" direction="row" spacing={2}>
             <Box >
               <Button onClick={props.openNewUserProfile} variant="contained"  color="primary" disableElevation>
-              <Link to="/profileForm" style={{ textDecoration: 'none' }}>Profile </Link>
+              <Link to="/profileForm" style={{ width: "70px", textDecoration: 'none' }}>Profile </Link>
               </Button>
             </Box>  
             <Box pl={2}>
