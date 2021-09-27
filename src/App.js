@@ -26,7 +26,7 @@ import Home from "./components/Home";
 
 
 export default () => {
-  const { jobs, setJobs, loading, customSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile, fetchUniqueJobDetails } = useApplicationData();
+  const { jobs, postApplication, setJobs, loading, customSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile, fetchUniqueJobDetails, newApplicationPost, setNewApplicationPost } = useApplicationData();
 
   return (
     <Router>
@@ -46,7 +46,7 @@ export default () => {
 
             <Route path="/customSearch" component={CustomSearch} />
             <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />            
-            <Route path="/apply/:jobId" children={ <UserApplyJob job={setJobs} jobs={jobs}/> } />
+            <Route path="/apply/:jobId" children={ <UserApplyJob newApplicationPost={newApplicationPost} postApplication={postApplication} job={setJobs} jobs={jobs}/> } />
             
             <Route path="/newPost" children={ <NewJobPost newJobPost={newJobPost} postJob={postJob} /> }/>
 

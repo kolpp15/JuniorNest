@@ -30,12 +30,11 @@ export default (props) => {
 
           <Grid item>
             <Box mt={2}>
-{/* onClick={props.open} */}
+
             <Button variant="outlined">
-              {/* {console.log('thisis props in jobcard', props)} */}
 
 
-              <Link to={`/jobDetails/${props.id}`} style={{ textDecoration: 'none' }} >Check</Link>
+              <Link to={`/jobDetails/${props.id}`} style={{ textDecoration: 'none', color: '#637DBB'  }} >Check</Link>
 
             </Button>
 

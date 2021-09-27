@@ -26,7 +26,7 @@ export default (props) => {
   
   const handleChange = (e) => {
     e.persist();
-    if (e.target.name.includes("questions")) {
+    if (e.target.name.includes("question")) {
       questionStorage[e.target.name] = e.target.value    
       setJobDetails((oldState) => ({...oldState,
         ...questionStorage
@@ -42,7 +42,7 @@ export default (props) => {
     //   if (typeof jobDetails[field] === "string"  && !jobDetails[field]) return;
     // }
     // if (!jobDetails,skills.length) return; 
-    //setLoading(true);
+    setLoading(true);
 
     let questionsObj = {}
     for (const question in jobDetails) {
@@ -55,6 +55,7 @@ export default (props) => {
     jobDetails.questions = questionsObj
 
     await props.postJob(jobDetails)
+    setLoading(false);
 
   }
 
@@ -130,7 +131,7 @@ export default (props) => {
           <Grid item xs={12}>
             {formValues.map((element, index) => (
               <div className="form-new-question" key={index}>
-                <FilledInput placeholder="Question to Applicants *" fullWidth name={`questions${index}`} value={jobDetails.questions[`questions${index}`]}
+                <FilledInput placeholder="Question to Applicants *" fullWidth name={`question${index}`} value={jobDetails.questions[`question${index}`]}
                 onChange={handleChange} />
                 {
                   index===0 ? 
@@ -139,7 +140,7 @@ export default (props) => {
                   </IconButton>
                   : 
                   <IconButton onClick={() => removeFormFields(index)}>
-                  <RemoveCircle style={{fill:"red"}}/>
+                  <RemoveCircle  color="primary"/>
                   </IconButton>               
                 }
               </div>

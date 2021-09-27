@@ -92,7 +92,7 @@ export default (props) => {
             <Button variant="outlined">
 
                           
-              <Link to={`/apply/${params.jobId}`} style={{ textDecoration: 'none' }} >Apply</Link>
+              <Link to={`/apply/${params.jobId}`} style={{ textDecoration: 'none', color: '#637DBB' }} >Apply</Link>
 
             </Button>
 

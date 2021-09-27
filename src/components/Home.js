@@ -74,7 +74,7 @@ function About() {
     <Grid container>
      <Grid item xs={6} > 
 
-    <Box px={15} pb={15}>
+    <Box px={10} pb={15}>
     <div className='header'>
       <h1 className='title'>Who is the most Handsome guy?</h1>
       <div className='links'>
@@ -110,7 +110,7 @@ function About() {
      </Grid>
      <Grid item xs={6}>
      <Box >
-        <img src={homeImage} width="550px" alt="gettheFUCKout"/>
+        <img src={homeImage} style={{width: "-webkit-fill-available"}} alt="gettheFUCKout"/>
      </Box>   
      </Grid>
     </Grid>

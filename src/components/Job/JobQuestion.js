@@ -11,16 +11,16 @@ export default (props) => {
 
         return (
           <>
-          <Box display="flex">
+          <Box display="flex" >
           <TextField 
             key={`${i}`}
             label={question}
+            name={`answer${i}`}
           />
           </Box>
           </>
           )
       })}
-
     </Box>
   </DialogContent>
 
