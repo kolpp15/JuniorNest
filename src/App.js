@@ -45,9 +45,11 @@ export default () => {
             <Route path="/about" component={about} />
 
             <Route path="/customSearch" component={CustomSearch} />
-            <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />
+            <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />            
+            <Route path="/apply/:jobId" children={ <UserApplyJob job={setJobs} jobs={jobs}/> } />
             
             <Route path="/newPost" children={ <NewJobPost newJobPost={newJobPost} postJob={postJob} /> }/>
+
             <Route path="/profileForm" children={ <ProfileForm newUserProfile={newUserProfile} postUser={postUser} /> }/>
 
             

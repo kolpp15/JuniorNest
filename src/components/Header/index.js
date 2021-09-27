@@ -12,12 +12,12 @@ export default (props) => (
           <Box display="flex" direction="row" spacing={2}>
             <Box >
               <Button onClick={props.openNewUserProfile} variant="contained"  color="primary" disableElevation>
-              <Link to="/profileForm" style={{ width: "70px", textDecoration: 'none' }}>Profile </Link>
+              <Link to="/profileForm" style={{ width: "70px", textDecoration: 'none', color: 'white'  }}>Profile </Link>
               </Button>
             </Box>  
             <Box pl={2}>
               <Button onClick={props.openNewJobPost} variant="contained" color="primary" disableElevation>
-              <Link to="/newPost" style={{ textDecoration: 'none' }}>
+              <Link to="/newPost" style={{ textDecoration: 'none', color: 'white'  }}>
                 New Post
               </Link>
               </Button>

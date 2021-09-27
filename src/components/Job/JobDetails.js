@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, DialogTitle, DialogContent, DialogActions, Typography, Button } from "@material-ui/core";
+import { Box, DialogTitle, DialogContent, DialogActions, Typography, Button, Grid } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { format } from "date-fns";
 import { useViewJobStyle } from '../Helper/StyleHelper';
@@ -7,6 +7,7 @@ import UserApplyJob from "./UserApplyJob";
 import { useParams } from "react-router";
 import useApplicationData from "../Helper/AppHelper";
 import { firestore, app } from "../../Firebase/config";
+import { Link } from 'react-router-dom';
 
 
 
@@ -84,11 +85,25 @@ export default (props) => {
       </Box>
 
     </DialogContent>
-    <DialogActions>
+
+    <Grid item>
+            <Box mt={2}>
+
+            <Button variant="outlined">
+
+                          
+              <Link to={`/apply/${params.jobId}`} style={{ textDecoration: 'none' }} >Apply</Link>
+
+            </Button>
+
+            </Box>
+    </Grid>
+
+    {/* <DialogActions>
       <Button onClick={handleClickOpen} variant="outlined">Apply</Button>
     </DialogActions>
 
-      <UserApplyJob show={applyJob} close={handleClose} questions={props.job["questions"] } />
+      <UserApplyJob show={applyJob} close={handleClose} questions={props.job["questions"] } /> */}
   
       </>
   );
