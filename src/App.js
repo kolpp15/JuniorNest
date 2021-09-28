@@ -19,10 +19,19 @@ import NewJobPost from './components/Job/NewJobPost';
 import JobDetails from './components/Job/JobDetails';
 import UserApplyJob from "./components/Job/UserApplyJob";
 import { homeImage } from "./assets/images";
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from "react-alert-template-snackbar-material-ui"
 
 import Home from "./components/Home";
 
-
+const options = {
+  // you can also just use 'bottom center'
+  position: positions.BOTTOM_CENTER,
+  timeout: 5000,
+  offset: '30px',
+  // you can also just use 'scale'
+  transition: transitions.SCALE
+}
 
 
 export default () => {
@@ -30,6 +39,7 @@ export default () => {
 
   return (
     <Router>
+    <AlertProvider template={AlertTemplate} {...options}>
 
     <ThemeProvider theme={theme}>
       <NavBar />
@@ -59,6 +69,7 @@ export default () => {
       </Grid>    
 
     </ThemeProvider>
+    </AlertProvider>
     </Router>
     
   );

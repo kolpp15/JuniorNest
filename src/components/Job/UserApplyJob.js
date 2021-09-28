@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Grid,
-  FilledInput,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  DialogContentText,
-  Button,
-  CircularProgress,
-  TextField,
-} from "@material-ui/core";
+import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, CircularProgress, TextField } from "@material-ui/core";
 import JobQuestion from "./JobQuestion";
 import { useParams } from "react-router";
+import { Redirect } from "react-router-dom";
 import { firestore, app } from "../../Firebase/config";
+import { useAlert } from "react-alert";
+
+
+
 
 const initState = {
   cover_letter: "", // we have to add this // webdeveloper
@@ -44,6 +37,8 @@ export default (props) => {
 
   let answerStorage = {};
 
+  const alert = useAlert();
+
   const handleChange = (e) => {
     e.persist();
     if (e.target.name.includes("questions")) {
@@ -57,6 +52,7 @@ export default (props) => {
     }
   };
 
+
   const handleSubmit = async () => {
     setLoading(true);
     let answersObj = {};
@@ -68,11 +64,12 @@ export default (props) => {
     }
     delete answersObj.questions_answers;
     applyDetails.questions_answers = answersObj;
-    console.log("************apply details", applyDetails);
-    console.log("************answerssss", answersObj);
-
     await props.postApplication(applyDetails);
     setLoading(false);
+    alert.success("One Step Closer to your Job!");
+    setTimeout (function(){
+    window.location.href = '/'
+    }, 2000);
   };
 
   return (
@@ -123,7 +120,7 @@ export default (props) => {
       <DialogActions>
         <Button onClick={props.close}>Cancel</Button>
         <Button
-          onClick={handleSubmit}
+          onClick={(handleSubmit)}
           variant="contained"
           disableElevation
           color="primary"
@@ -134,6 +131,7 @@ export default (props) => {
           ) : (
             "Apply Job"
           )}
+
         </Button>
       </DialogActions>
     </Box>

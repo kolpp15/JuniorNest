@@ -3,6 +3,7 @@ import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogCo
 import { Close as CloseIcon } from "@material-ui/icons"
 import './AddField.css'
 import { AddCircle, RemoveCircle } from "@material-ui/icons"
+import { useAlert } from "react-alert";
 
 const initState = {
   title: "", // we have to add this // webdeveloper
@@ -23,7 +24,7 @@ export default (props) => {
   const [formValues, setFormValues] = useState([{ questions: "" }])
 
   let questionStorage = {}
-  
+
   const handleChange = (e) => {
     e.persist();
     if (e.target.name.includes("question")) {
@@ -56,7 +57,10 @@ export default (props) => {
 
     await props.postJob(jobDetails)
     setLoading(false);
-
+    alert.success("Job Post Success!");
+    setTimeout (function(){
+      window.location.href = '/'
+    }, 2000);
   }
 
 
@@ -69,7 +73,8 @@ export default (props) => {
       newFormValues.splice(i, 1);
       setFormValues(newFormValues)
   }
-
+  const alert = useAlert();
+  
   return (
     <>
     {/* <Dialog open={props.newJobPost} fullWidth> */}

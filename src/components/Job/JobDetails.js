@@ -17,6 +17,8 @@ export default (props) => {
   const [jobInfo, setJobInfo] = useState([])
   const params = useParams();
   const classes = useViewJobStyle();
+  
+  
 
   const fetchUniqueJobDetails = async (inputId) => {
     const jobInfo = firestore.collection('job_posts').doc(inputId.jobId);
@@ -104,7 +106,11 @@ export default (props) => {
     </DialogActions>
 
       <UserApplyJob show={applyJob} close={handleClose} questions={props.job["questions"] } /> */}
-  
+
       </>
+
+ 
   );
+
+ 
 };
