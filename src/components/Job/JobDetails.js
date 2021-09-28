@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, DialogTitle, DialogContent, DialogActions, Typography, Button, Grid } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
-import { format } from "date-fns";
+import { format, differenceInBusinessDays } from "date-fns";
 import { useViewJobStyle } from '../Helper/StyleHelper';
 import UserApplyJob from "./UserApplyJob";
 import { useParams } from "react-router";
@@ -77,12 +77,12 @@ export default (props) => {
           <Typography variant="caption" key="description-label">Description: </Typography>
           <Typography variant="body2" key="description-field">{jobInfo.description}</Typography>
         </Box>
-        <Box className={classes.info} display="flex" key="posted-on">
+        {/* <Box className={classes.info} display="flex" key="posted-on">
           <Typography variant="caption" key="post-on-label">Posted On: </Typography>
           <Typography variant="body2" key="post-on-field">
-            {/* {jobInfo.post_date && format(jobInfo.post_date, "dd/MMM/yyyy")} */}
+          {differenceInBusinessDays(Date.now(), jobInfo.post_date)} days ago 
           </Typography>
-        </Box>
+        </Box> */}
 
       </Box>
 

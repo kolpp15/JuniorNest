@@ -10,12 +10,16 @@ export default (props) => {
     position: "Full time",
     remote: "Remote"
   })
+  
 
   const handleChange = (e) => {
     e.persist();
-    setJobSearch((oldState) => ({...oldState, [e.target.name]: e.target.value,
+    setJobSearch((oldState) => ({
+      ...oldState, 
+      [e.target.name]: e.target.value,
     }));
   }
+
 
   const search = async () => {
     setLoading(true);
@@ -35,8 +39,14 @@ export default (props) => {
         <MenuItem value="Remote">Remote</MenuItem>
         <MenuItem value="In-Office">In-Office</MenuItem>
       </Select>
-      <Button disabled={loading} variant="contained" color="primary" disableElevation onClick={search}>
-      {loading ? (<CircularProgress color="secondary" size={22} />
+      <Button 
+        disabled={loading} 
+        variant="contained" 
+        color="primary" 
+        disableElevation 
+        onClick={search}
+      >
+        {loading ? (<CircularProgress color="secondary" size={22} />
             ) : (
             "Search"
           )}

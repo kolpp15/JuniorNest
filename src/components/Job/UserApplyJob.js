@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, CircularProgress, TextField } from "@material-ui/core";
-import JobQuestion from "./JobQuestion";
+import { Box, Grid, FilledInput, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, CircularProgress } from "@material-ui/core";
 import { useParams } from "react-router";
-import { Redirect } from "react-router-dom";
-import { firestore, app } from "../../Firebase/config";
+import { firestore } from "../../Firebase/config";
 import { useAlert } from "react-alert";
 
 
 
 
 const initState = {
-  cover_letter: "", // we have to add this // webdeveloper
+  cover_letter: "", 
   status: "Open",
   apply_date: "",
   job_post_id: "",
@@ -23,6 +21,7 @@ export default (props) => {
   const [applyDetails, setApplyDetails] = useState(initState);
   const [jobInfo, setJobInfo] = useState([]);
   const params = useParams();
+  const hiddenJobId = params.jobId;
 
   const fetchUniqueJobDetails = async (inputId) => {
     const jobInfo = firestore.collection("job_posts").doc(inputId.jobId);
@@ -47,6 +46,7 @@ export default (props) => {
     } else {
       setApplyDetails((oldState) => ({
         ...oldState,
+        job_post_id: hiddenJobId,
         [e.target.name]: e.target.value,
       }));
     }
@@ -68,12 +68,15 @@ export default (props) => {
     setLoading(false);
     alert.success("One Step Closer to your Job!");
     setTimeout (function(){
-    window.location.href = '/'
+      window.location.href = '/'
     }, 2000);
   };
 
+  console.log('>>>', params)
+
   return (
     <Box>
+   
       <DialogTitle>Submit Application</DialogTitle>
       <DialogContent>
         <DialogContentText>
@@ -105,6 +108,7 @@ export default (props) => {
         </Box>
       
         <Grid item xs={12}>
+       
           <FilledInput
             onChange={handleChange}
             name="cover_letter"
@@ -114,6 +118,9 @@ export default (props) => {
             multiline
             rows={4}
           />
+          
+          <FilledInput onChange={handleChange} name="job_post_id" type="hidden" value={hiddenJobId}/>
+
         </Grid>
       </DialogContent>
 
@@ -134,6 +141,7 @@ export default (props) => {
 
         </Button>
       </DialogActions>
+
     </Box>
   );
 };

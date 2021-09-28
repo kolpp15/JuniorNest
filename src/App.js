@@ -24,6 +24,7 @@ import AlertTemplate from "react-alert-template-snackbar-material-ui"
 
 import Home from "./components/Home";
 
+
 const options = {
   // you can also just use 'bottom center'
   position: positions.BOTTOM_CENTER,
@@ -51,10 +52,10 @@ export default () => {
       <Grid container justify="center">
         <Grid item xs={10}>
           <Searchbar fetchJobsCustom={fetchJobsCustom} />        
+            
             <Route path="/" exact component={Home} /> 
             <Route path="/about" component={about} />
-
-            <Route path="/customSearch" component={CustomSearch} />
+            <Route path="/customSearch" children={ <CustomSearch jobs={jobs} loading={loading} customSearch={customSearch} fetchJobs={fetchJobs} fetchJobsCustom={fetchJobsCustom}/> }  />
             <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />            
             <Route path="/apply/:jobId" children={ <UserApplyJob newApplicationPost={newApplicationPost} postApplication={postApplication} job={setJobs} jobs={jobs}/> } />
             

@@ -42,7 +42,7 @@ export default (props) => {
     // for (const field in jobDetails) {
     //   if (typeof jobDetails[field] === "string"  && !jobDetails[field]) return;
     // }
-    // if (!jobDetails,skills.length) return; 
+
     setLoading(true);
 
     let questionsObj = {}

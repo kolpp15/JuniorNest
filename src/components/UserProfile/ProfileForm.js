@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
 import Upload from "./Upload";
 import { Close as CloseIcon } from "@material-ui/icons";
-// import useApplicationData from "../Helper/AppHelper";
+import { useAlert } from "react-alert";
 
 
 const initState = {
@@ -22,7 +22,7 @@ export default (props) => {
   const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState(initState)
   // const { postUser } = useApplicationData();
-
+  const alert = useAlert();
   
   const handleChange = (e) => {
     e.persist();
@@ -33,6 +33,11 @@ export default (props) => {
   const handleSubmit = async () => {
     setLoading(true);
     await props.postUser(userDetails)
+    alert.success("Profile  Success! Start Applying now!");
+    setTimeout (function(){
+      window.location.href = '/'
+    }, 2000);
+    setLoading(false);
 
   }
 
