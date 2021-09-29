@@ -1,8 +1,22 @@
 import { makeStyles } from '@material-ui/core'
 
+const useBoxStyles = makeStyles({
+  wrapper: {
+    backgroundColor: "#fff",
+    display: "flex",
+    flexDirection: "column",
+    padding:"0px 10px 10px 10px",
+    boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.1)",
+    borderRadius: "5px",
+    "& > *": {
+      flex: 1,
+      height: "45px",
+      margin: "8px",
+    },
+  },
+})
 
-
-const useSearchBarStyles = makeStyles({
+const useSearchBarStyles = makeStyles({  
   wrapper: {
     backgroundColor: "#fff",
     display: "flex",
@@ -57,4 +71,4 @@ const useViewJobStyle = makeStyles({
 });
 
 
-export { useSearchBarStyles, useJobCardStyle, useViewJobStyle }
+export { useSearchBarStyles, useJobCardStyle, useViewJobStyle, useBoxStyles }

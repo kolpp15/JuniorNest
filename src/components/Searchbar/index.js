@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Box, Button, Select, MenuItem, CircularProgress} from '@material-ui/core';
 import { useSearchBarStyles } from '../Helper/StyleHelper';
 import CustomSearch from '../Job/CustomSearch';
+import { Link } from 'react-router-dom';
 
 
 export default (props) => {
@@ -39,6 +40,8 @@ export default (props) => {
         <MenuItem value="Remote">Remote</MenuItem>
         <MenuItem value="In-Office">In-Office</MenuItem>
       </Select>
+
+
       <Button 
         disabled={loading} 
         variant="contained" 
@@ -48,10 +51,16 @@ export default (props) => {
       >
         {loading ? (<CircularProgress color="secondary" size={22} />
             ) : (
-            "Search"
+        <Link to={`/customSearch`}  style={{ textDecoration: 'none', color: 'white'  }}>
+              Search
+        </Link>
           )}
       </Button>
+
+
     </Box>
 
   )
 }
+
+{/* <Link to={`/customSearch/${jobSearch.position + " " + jobSearch.remote}`} > */}

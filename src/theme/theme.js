@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 
-const primary = "#637DBB";
-const secondary = "#BDD5EF";
+const primary = "#5E72E4";
+const secondary = "#5E72E4";
 
 export default createMuiTheme({
   typography: {

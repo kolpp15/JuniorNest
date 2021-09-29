@@ -8,30 +8,40 @@ import {
   Card,
   makeStyles,
   Box,
+  Item,
   DialogTitle,
+  Button,
+  Divider,
 } from "@material-ui/core";
 import { homeImage } from "../assets/images";
 import { Bar, Radar } from "react-chartjs-2";
+import { useBoxStyles } from './Helper/StyleHelper';
+import GoogleTrends2 from "./GoogleTrends/GoogleTrends2";
+// import Script from 'react-load-script'
+import Safe from "react-safe"
+
+
+//-----------------------------------------------------------
 
 const dataBar = {
-  labels: ["Red", "Erminio", "Brian", "Green", "Dan"],
+  labels: ["DB", "Front-End", "Back-End", "test", "test"],
   datasets: [
     {
-      label: "# of Votes",
-      data: [12, 0, 12, 12, 12, 3],
+      label: "# of Votes", 
+      data: [10, 8, 9, 7, 12, 3],
       backgroundColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
+        "#F54C48",
+        "#2DCEB1",
+        "#6B6BE4",
+        "rgba(30,165,239, 1)",
+        "rgb(251,163,64, 0.9)",
       ],
       borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-        "rgba(153, 102, 255, 1)",
+        "#F54C48",
+        "#2DCEB1",
+        "#6B6BE4",
+        "rgba(30,165,239, 1)",
+        "rgb(251,163,64, 0.9)",
       ],
       borderWidth: 1,
     },
@@ -71,25 +81,77 @@ const optionsRadar = {
   },
 };
 
-function About() {
+//-----------------------------------------------------------
+
+function Home() {
+
+  const classes = useBoxStyles();
+      const keywords = ["Canada Salary"];
+      const geo = "CA";
+      const time = "today 12-m";
+      const property = "";
+      const comparison = keywords.map((q) => ({ keyword: q, geo: geo, time: time}));
+      const keyword = keywords.join();
+
   return (
     <>
-      <Grid container spacing={9}>
-        <Grid item xs={6}>
-          <Box p={5} borderRadius="5%" bgcolor="#fff" boxShadow={1}>
-            <DialogTitle>Who is the most Handsome guy?</DialogTitle>
+      <Grid container spacing={9} >
 
+        <Grid item xs={6}>
+          <Box className={classes.wrapper} mb={3}>
+            <DialogTitle>Web Developer Salary</DialogTitle >
             <Bar data={dataBar} options={optionsBar} />
           </Box>
+     
 
-          <Box p={5} borderRadius="5%" bgcolor="#fff" boxShadow={1}>
-              <DialogTitle>Web Developer Skills</DialogTitle>
+
+
+
+   
+          {/* <Box className={classes.wrapper}>
+            <DialogTitle>Google Trends</DialogTitle>
+
+              <GoogleTrends2
+                type="TIMESERIES"
+                comparison={comparison}
+                keyword={keyword}
+                geo={geo}
+                time={time}
+                property={property}
+              />
+
+            {/* <Safe.script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2674_RC03/embed_loader.js"></Safe.script> 
+            <Safe.script type="text/javascript"> trends.embed.renderExploreWidget("GEO_MAP", {"comparisonItem":[{"keyword":"Salary Canada","geo":"CA","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=Salary%20Canada&geo=CA&date=today 12-m","guestPath":"https://trends.google.pt:443/trends/embed/"}); </Safe.script> */}
+          {/* </Box> */}
+     
+
+          <Box className={classes.wrapper}>
+            <DialogTitle>Web Developer Skills</DialogTitle>
+            <Divider/>
             <Radar data={dataRadar} options={optionsRadar} />
           </Box>
+
+          <Box className={classes.wrapper}>
+            <DialogTitle>Web Developer Skills</DialogTitle>
+
+
+            <GoogleTrends2
+            type="GEO_MAP"
+            comparison={comparison}
+            keyword={keyword}
+            geo={"geo"}
+            time={time}
+            property={property}
+            />
+
+
+
+          </Box>
+
         </Grid>
         
         <Grid item xs={6}>
-          <Box>
+          <Box className={classes.wrapper}>
             <img
               src={homeImage}
               style={{ width: "-webkit-fill-available" }}
@@ -102,4 +164,4 @@ function About() {
   );
 }
 
-export default About;
+export default Home;

@@ -1,77 +1,107 @@
 import React from 'react';
-import { CardActionArea, Typography, CardMedia, CardContent, Card, makeStyles, Box } from '@material-ui/core';
+import { CardActionArea, Typography, CardMedia, CardContent, Card, makeStyles, Box, Grid } from '@material-ui/core';
+import { LinkedIn, GitHub } from '@material-ui/icons';
 import { danFace, erminioFace } from '../assets/images';
 
 
-export default function about() {
+export default function About() {
 
   return (
     <>
+    
+    <Grid container style={{textAlign: 'center'}} spacing={8}>   
 
-    <Box display="flex" justifyContent="center" p={5}>
-
-    <Card sx={{ maxWidth: 345 }} style={{color: "red"}}>
+    <Grid item xs={4} >
+    <Card sx={{ maxWidth: 345 }} style={{color: "purple", height: "400px"}}>
       <CardActionArea>
         <CardMedia
+          
           component="img"
-          height="140"
+          height="180"
           image={danFace}
-          alt="erminio-mendes"
+          alt="dan-you"
+          style={ {borderRadius: '50%', width: '180px', marginInline: 'auto', marginTop: '30px'}}
+       
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Dan
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          Weird Korean Guy
           </Typography>
         </CardContent>
+
+        <CardContent>
+          <GitHub style={{margin: '10px'}} />
+          <LinkedIn style={{margin: '10px'}} />
+        </CardContent>
+
       </CardActionArea>
     </Card>
+    </Grid>
 
-    <Card sx={{ maxWidth: 345 }}>
+    <Grid item xs={4}>
+    <Card sx={{ maxWidth: 345 }} style={{color: "#178DED", height: "400px"}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="180"
           image={erminioFace}
           alt="erminio-mendes"
+          style={ {borderRadius: '50%', width: '180px', marginInline: 'auto', marginTop: '30px'}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Erminio
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          Weird Brazilian Guy. So polite but little funny guy 
           </Typography>
         </CardContent>
+
+        <CardContent>
+          <GitHub style={{margin: '10px'}} />
+          <LinkedIn style={{margin: '10px'}} />
+        </CardContent>
+
       </CardActionArea>
     </Card>
+    </Grid>
 
-    <Card sx={{ maxWidth: 345 }}>
+    <Grid item xs={4}>
+    <Card sx={{ maxWidth: 345 }} style={{color: "#f22b79", height: "400px"}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image={danFace}
-          alt="erminio-mendes"
+          height="180"
+          image="https://media-exp1.licdn.com/dms/image/C5603AQH9BpeS0Lyrdw/profile-displayphoto-shrink_800_800/0/1624055617180?e=1638403200&v=beta&t=NHzh6KdoUSABB1zvql-mIR-CUtMCutIlKKwcPANqJvY"
+          alt="brian-sohn"
+          style={ {borderRadius: '50%', width: '180px', marginInline: 'auto', marginTop: '30px'}}
+
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            Brian
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            Worldwide Mr. Perfect
           </Typography>
         </CardContent>
+
+        <CardContent>
+          <GitHub style={{margin: '10px'}} />
+          <LinkedIn style={{margin: '10px'}} />
+        </CardContent>
+
       </CardActionArea>
     </Card>
+    </Grid>
 
-    </Box>
-  </>
+    </Grid> 
+    
+    </>
 
   );
 }
+

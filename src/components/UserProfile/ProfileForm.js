@@ -3,6 +3,8 @@ import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActio
 import Upload from "./Upload";
 import { Close as CloseIcon } from "@material-ui/icons";
 import { useAlert } from "react-alert";
+import { storage } from "../../Firebase/config";
+import { v4 as uuid } from 'uuid';
 
 
 const initState = {
@@ -21,7 +23,8 @@ const initState = {
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState(initState)
-  // const { postUser } = useApplicationData();
+  const [fileUpload, setFileUpload] = useState(null);
+
   const alert = useAlert();
   
   const handleChange = (e) => {
@@ -30,16 +33,27 @@ export default (props) => {
       }));    
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     setLoading(true);
     await props.postUser(userDetails)
-    alert.success("Profile  Success! Start Applying now!");
+    alert.success("Profile Update Success! Start Applying Now!");
     setTimeout (function(){
       window.location.href = '/'
     }, 2000);
     setLoading(false);
 
+    const resumeId = uuid();
+    const storageRef = storage.ref('files').child(resumeId);
+
+    await storageRef.put(fileUpload);
   }
+
+
+  const readFiles = (e) => {
+    const file = e.target.files[0];
+    setFileUpload(file)
+  };
+  
 
   return (
     <>
@@ -127,26 +141,32 @@ export default (props) => {
           </Grid>          
           <FilledInput name="user_id" value={userDetails.user_id} type="hidden" />
 
-          <Grid item xs={12}>
-            <Upload 
-            onChange={handleChange} 
-            />
+          <Grid item xs={6}>
+
+          <Box> 
+            Resume: <input type="file" onChange={readFiles} />
+          </Box>
           </Grid>
+
+          <Grid item xs={6}>
+          <DialogActions>      
+            <Box color="red" width="100%" display="flex" justifyContent="space-between" alignItems="center">
+               <Typography variant="caption">*Required fields</Typography>
+                <Button onClick={handleSubmit} variant="contained" disableElevation color="primary" disabled={loading}>
+                  {loading ? (<CircularProgress color="secondary" size={22} />
+                  ) : (
+                  "Save"
+                  )}
+                </Button>
+            </Box>
+           </DialogActions> 
+          </Grid>
+
 
         </Grid>
       </DialogContent>
 
-      <DialogActions>      
-        <Box color="red" width="100%" display="flex" justifyContent="space-between" alignItems="center">
-          <Typography variant="caption">*Required fields</Typography>
-          <Button onClick={handleSubmit} variant="contained" disableElevation color="primary" disabled={loading}>
-            {loading ? (<CircularProgress color="secondary" size={22} />
-            ) : (
-            "Save"
-          )}
-          </Button>
-        </Box>
-      </DialogActions> 
+
     </>
   );
 };

@@ -5,13 +5,13 @@ import { Box, ThemeProvider, Grid, CircularProgress, Button } from "@material-ui
 import Header from "./components/Header/";
 import Searchbar from "./components/Searchbar";
 //import JobCard from "./components/Job/JobCard";
-import about from "./components/About";
+import About from "./components/About";
 import CustomSearch from "./components/Job/CustomSearch";
 
 import useApplicationData from "./components/Helper/AppHelper";
 import NavBar from "./components/Nav/NavBar";
 
-import {BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 //import About from './components/About';
 
 import ProfileForm from './components/UserProfile/ProfileForm';
@@ -23,6 +23,7 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from "react-alert-template-snackbar-material-ui"
 
 import Home from "./components/Home";
+
 
 
 const options = {
@@ -38,6 +39,7 @@ const options = {
 export default () => {
   const { jobs, postApplication, setJobs, loading, customSearch, newJobPost, setNewJobPost, viewJob, setViewJob, fetchJobs, fetchJobsCustom, postJob, postUser, newUserProfile, setNewUserProfile, fetchUniqueJobDetails, newApplicationPost, setNewApplicationPost } = useApplicationData();
 
+  
   return (
     <Router>
     <AlertProvider template={AlertTemplate} {...options}>
@@ -52,9 +54,10 @@ export default () => {
       <Grid container justify="center">
         <Grid item xs={10}>
           <Searchbar fetchJobsCustom={fetchJobsCustom} />        
-            
+
+          <Switch>
             <Route path="/" exact component={Home} /> 
-            <Route path="/about" component={about} />
+            <Route path="/about" component={About} />
             <Route path="/customSearch" children={ <CustomSearch jobs={jobs} loading={loading} customSearch={customSearch} fetchJobs={fetchJobs} fetchJobsCustom={fetchJobsCustom}/> }  />
             <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />            
             <Route path="/apply/:jobId" children={ <UserApplyJob newApplicationPost={newApplicationPost} postApplication={postApplication} job={setJobs} jobs={jobs}/> } />
@@ -62,7 +65,7 @@ export default () => {
             <Route path="/newPost" children={ <NewJobPost newJobPost={newJobPost} postJob={postJob} /> }/>
 
             <Route path="/profileForm" children={ <ProfileForm newUserProfile={newUserProfile} postUser={postUser} /> }/>
-
+          </Switch>
             
 
         </Grid>

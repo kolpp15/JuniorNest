@@ -9,6 +9,7 @@ export default function useApplicationData() {
   const [newUserProfile, setNewUserProfile] = useState(false);
   const [viewJob, setViewJob] = useState({});
   const [newApplicationPost, setNewApplicationPost] = useState(false);
+  // const [fileUrl, setFileUrl] = useState([]);
   
   const fetchJobs = async () => {
     setCustomSearch(false);
@@ -64,8 +65,13 @@ export default function useApplicationData() {
     fetchJobs();
   } 
 
-  const postUser = async userDetails => {
+  const postUser = async (userDetails, storageRef, file) => {
     await firestore.collection('users').add({ ...userDetails });
+    // await storageRef.put(file);
+
+    // storageRef.getDownloadURL().then((url) => {
+    // setFileUrl(url);
+    // });
     fetchJobs();
   } 
   

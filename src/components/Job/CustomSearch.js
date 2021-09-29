@@ -1,13 +1,52 @@
 import React from "react";
-import { Box, CircularProgress, Button, Grid } from "@material-ui/core";
+import { Box, CircularProgress, Button, Grid, DialogTitle } from "@material-ui/core";
 import { Close as CloseIcon } from "@material-ui/icons";
 import JobCard from "./JobCard";
+import { useBoxStyles } from '../Helper/StyleHelper';
+import { Bar } from "react-chartjs-2";
+
+const dataBar = {
+  labels: ["DB", "Front-End", "Back-End", "test", "test"],
+  datasets: [
+    {
+      label: "# of Votes", 
+      data: [10, 8, 9, 7, 12, 3],
+      backgroundColor: [
+        "#F54C48",
+        "#2DCEB1",
+        "#6B6BE4",
+        "rgba(30,165,239, 1)",
+        "rgb(251,163,64, 0.9)",
+      ],
+      borderColor: [
+        "#F54C48",
+        "#2DCEB1",
+        "#6B6BE4",
+        "rgba(30,165,239, 1)",
+        "rgb(251,163,64, 0.9)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+const optionsBar = {
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          beginAtZero: true,
+        },
+      },
+    ],
+  },
+};
 
 export default function CustomSearch(props) {    
-
+  const classes = useBoxStyles();
   return (
     <>
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item xs={8}>
           {props.loading ? (
             <Box display="flex" justifyContent="center">
@@ -16,6 +55,7 @@ export default function CustomSearch(props) {
           ) : (
             <>
               {props.customSearch && (
+                
                 <Box my={2} display="flex" justifyContent="flex-end">
                   <Button onClick={props.fetchJobs}>
                     <CloseIcon sies={20} />
@@ -31,7 +71,10 @@ export default function CustomSearch(props) {
         </Grid>
         <Grid item xs={4}>
          <>
-
+         <Box className={classes.wrapper} mb={3}>
+            <DialogTitle>Web Developer Salary</DialogTitle>
+            <Bar data={dataBar} options={optionsBar} />
+          </Box>
          </>
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    height: "60px"
+    height: "33px",
   },
   menuButton: {
     // marginRight: theme.spacing(2),
@@ -49,19 +49,10 @@ const NavBar = (props) => {
     <div className={classes.root}>
       <HideOnScroll {...props}>
 
-          <AppBar elevation={0} >
+          <AppBar elevation={0} style={{background: "linear-gradient(87deg, #28C7E9 ,#1171ef)"}}>
             
-            <Toolbar bgcolor="secondary.main" style={{ marginLeft: "9rem", marginRight: "9rem"}}>
-              <Typography
-                variant="h5"
-                component="p"
-                color="white"
-                className={classes.title}
-              >
-              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>juniorNest</Link>
-              </Typography>
-
-              
+            <Toolbar style={{ display: "contents", textAlign: "right", marginLeft: "9rem", marginRight: "9rem"}}>
+     
               
 
               {isMobile ? (
@@ -71,6 +62,7 @@ const NavBar = (props) => {
                     edge="start"
                     aria-label="menu"
                     onClick={handleMenu}
+                    style={{justifyContent: "right", marginRight: "5rem"}}
                   >
                     <MenuIcon  style={{fill:"white"}} />
                   </IconButton>
@@ -130,7 +122,7 @@ const NavBar = (props) => {
                 </>
 
               ) : (
-                <div>
+                <div style={{marginRight: "5rem"}}>
 
                   <Button
                     variant="text"
