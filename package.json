@@ -11,6 +11,8 @@
     "chart.js": "^3.5.1",
     "classnames": "^2.2.6",
     "date-fns": "^2.15.0",
+    "emailjs": "^3.6.0",
+    "emailjs-com": "^3.2.0",
     "firebase": "^7.24.0",
     "google-trends-api": "^4.9.2",
     "normalize.css": "^8.0.1",

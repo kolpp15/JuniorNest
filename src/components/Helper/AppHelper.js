@@ -65,13 +65,11 @@ export default function useApplicationData() {
     fetchJobs();
   } 
 
-  const postUser = async (userDetails, storageRef, file) => {
-    await firestore.collection('users').add({ ...userDetails });
-    // await storageRef.put(file);
-
-    // storageRef.getDownloadURL().then((url) => {
-    // setFileUrl(url);
-    // });
+  const postUser = async (userDetails, resumeId) => { 
+    await firestore.collection('users').add({ 
+      ...userDetails,
+      resume_id: resumeId,
+    });
     fetchJobs();
   } 
   

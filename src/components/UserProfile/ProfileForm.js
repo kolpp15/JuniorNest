@@ -17,13 +17,15 @@ const initState = {
   description: "",
   linkedin: "",
   user_id: "GMtfe81Z9fbhkBCXKGpM",
- 
+  resume_id: "",
 }
 
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [userDetails, setUserDetails] = useState(initState)
   const [fileUpload, setFileUpload] = useState(null);
+
+  console.log('>>>>', userDetails);
 
   const alert = useAlert();
   
@@ -34,18 +36,18 @@ export default (props) => {
   }
 
   const handleSubmit = async (e) => {
-    setLoading(true);
-    await props.postUser(userDetails)
+    setLoading(true); 
+
+    const resumeId = uuid();
+    const storageRef = storage.ref('files').child(resumeId);
+    await storageRef.put(fileUpload);
+  
+    await props.postUser(userDetails, resumeId)
     alert.success("Profile Update Success! Start Applying Now!");
     setTimeout (function(){
       window.location.href = '/'
     }, 2000);
     setLoading(false);
-
-    const resumeId = uuid();
-    const storageRef = storage.ref('files').child(resumeId);
-
-    await storageRef.put(fileUpload);
   }
 
 
@@ -140,6 +142,7 @@ export default (props) => {
             fullWidth multiline rows={4} />
           </Grid>          
           <FilledInput name="user_id" value={userDetails.user_id} type="hidden" />
+          {/* <FilledInput name="resume_url" value={resumeUrl} type="hidden" />  */}
 
           <Grid item xs={6}>
 

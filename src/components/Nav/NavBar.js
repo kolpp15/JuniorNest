@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     // marginLeft: theme.spacing(2),
   },
 
+
 }));
 
 function HideOnScroll(props) {
@@ -46,7 +47,7 @@ const NavBar = (props) => {
     setAnchor(event.currentTarget);
   };
   return (
-    <div className={classes.root}>
+    <Box>
       <HideOnScroll {...props}>
 
           <AppBar elevation={0} style={{background: "linear-gradient(87deg, #28C7E9 ,#1171ef)"}}>
@@ -122,7 +123,8 @@ const NavBar = (props) => {
                 </>
 
               ) : (
-                <div style={{marginRight: "5rem"}}>
+                // <div style={{marginRight: "5rem"}}>
+                <div className={classes.links}>
 
                   <Button
                     variant="text"
@@ -147,7 +149,7 @@ const NavBar = (props) => {
 
                   <Button
                     variant="text"
-                    color="white"
+                    color="white"                    
                   >
                     <Link to="/employer" style={{ textDecoration: 'none', color: 'white'  }}>Employer </Link>
                   </Button>
@@ -159,7 +161,7 @@ const NavBar = (props) => {
 
 
       </HideOnScroll>
-    </div>
+    </Box>
   );
 };
 
