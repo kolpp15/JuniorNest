@@ -110,9 +110,9 @@ export default (props) => {
 
     setLoading(false);
     alert.success("One Step Closer to your Job!");
-    // setTimeout (function(){
-    //   window.location.href = '/'
-    // }, 2000);
+    setTimeout (function(){
+      window.location.href = '/'
+    }, 2000);
 
   };
 

@@ -23,6 +23,7 @@ import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from "react-alert-template-snackbar-material-ui"
 
 import Home from "./components/Home";
+import EmployerDash from "./components/Dashboard/EmployerDash";
 
 
 
@@ -58,6 +59,7 @@ export default () => {
           <Switch>
             <Route path="/" exact component={Home} /> 
             <Route path="/about" component={About} />
+            <Route path="/employer" component={EmployerDash} />
             <Route path="/customSearch" children={ <CustomSearch jobs={jobs} loading={loading} customSearch={customSearch} fetchJobs={fetchJobs} fetchJobsCustom={fetchJobsCustom}/> }  />
             <Route path="/jobDetails/:jobId" children={ <JobDetails job={setJobs} jobs={jobs}/> } />            
             <Route path="/apply/:jobId" children={ <UserApplyJob newApplicationPost={newApplicationPost} postApplication={postApplication} job={setJobs} jobs={jobs}/> } />

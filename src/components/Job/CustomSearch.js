@@ -4,6 +4,7 @@ import { Close as CloseIcon } from "@material-ui/icons";
 import JobCard from "./JobCard";
 import { useBoxStyles } from '../Helper/StyleHelper';
 import { Bar } from "react-chartjs-2";
+import App from "../GoogleTrends/App";
 
 const dataBar = {
   labels: ["DB", "Front-End", "Back-End", "test", "test"],
@@ -42,8 +43,12 @@ const optionsBar = {
   },
 };
 
+
 export default function CustomSearch(props) {    
   const classes = useBoxStyles();
+
+  console.log('propsjobs>>>', props.jobs)
+  
   return (
     <>
       <Grid container spacing={3}>
@@ -69,13 +74,19 @@ export default function CustomSearch(props) {
             </>
           )}
         </Grid>
+
         <Grid item xs={4}>
+        {props.loading ? (
+            <Box display="flex" justifyContent="center">
+              <CircularProgress />
+            </Box>
+          ) : (
+
          <>
-         <Box className={classes.wrapper} mb={3}>
-            <DialogTitle>Web Developer Salary</DialogTitle>
-            <Bar data={dataBar} options={optionsBar} />
-          </Box>
+         {props.jobs.length && <App item={props.jobs}/>}
          </>
+          )}
+         
         </Grid>
       </Grid>
     </>

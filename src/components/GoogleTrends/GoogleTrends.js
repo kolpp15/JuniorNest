@@ -1,42 +1,29 @@
 import React from "react";
-// import ReactDOM from "react-dom";
-// import Script from "react-load-script";
-// // import googleTrends from 'google-trends-api';
-// import { Box, Input } from "@material-ui/core";
-import Safe from "react-safe"
+import ReactDOM from "react-dom";
+import Script from "react-load-script";
 
-
-// const googleTrends = require('google-trends-api')
-
-// const fetchTrends = () => {
-//     googleTrends.realTimeTrends({
-//       geo: 'US',
-//       category: 'all',
-//     }, function(err, results) {
-//       if (err) console.log('oh no error!', err);
-//       else console.log(results);
-//     });
-// }
-
-
-export default function GoogleTrends() {
-  return (
-    <div>
-
-
-    
-      <Safe.script src="https://use.typekit.net/foobar.js"></Safe.script>
-      <Safe.script>{
-        `try{Typekit.load({ async: true });}catch(e){}`
+export default function GoogleTrends({ type, keyword, url }) {
+  const handleScriptLoad = _ => {
+    window.trends.embed.renderExploreWidgetTo(
+      document.getElementById("widget"),
+      type,
+      {
+        comparisonItem: [{ keyword, geo: "CA", time: "today 12-m" }],
+        category: 0,
+        property: ""
+      },
+      {
+        exploreQuery: `q=${encodeURI(keyword)}&geo=US&date=today 12-m`,
+        guestPath: "https://trends.google.com:443/trends/embed/"
       }
-      </Safe.script>
+    );
+  };
 
-      
+  const renderGoogleTrend = _ => {
+    return <Script url={url} onLoad={handleScriptLoad} />;
+  };
 
-
-
-    </div>
-  )
+  return <div className="googleTrend">{renderGoogleTrend()}</div>;
 }
 
 

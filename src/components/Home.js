@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Grid,
   CardActionArea,
@@ -12,22 +12,21 @@ import {
   DialogTitle,
   Button,
   Divider,
+  Container,
 } from "@material-ui/core";
 import { homeImage } from "../assets/images";
 import { Bar, Radar } from "react-chartjs-2";
-import { useBoxStyles } from './Helper/StyleHelper';
-import GoogleTrends2 from "./GoogleTrends/GoogleTrends2";
-// import Script from 'react-load-script'
-import Safe from "react-safe"
-
-
+import { useBoxStyles } from "./Helper/StyleHelper";
+import ReactDOM from "react-dom";
+import App from "./GoogleTrends/App";
+import { csv } from 'd3';
 //-----------------------------------------------------------
 
 const dataBar = {
   labels: ["DB", "Front-End", "Back-End", "test", "test"],
   datasets: [
     {
-      label: "# of Votes", 
+      label: "# of Votes",
       data: [10, 8, 9, 7, 12, 3],
       backgroundColor: [
         "#F54C48",
@@ -82,74 +81,41 @@ const optionsRadar = {
 };
 
 //-----------------------------------------------------------
-
+const row = d =>{
+  d.TITLEX  = +d.TITLEX
+  return d
+}
 function Home() {
 
   const classes = useBoxStyles();
-      const keywords = ["Canada Salary"];
-      const geo = "CA";
-      const time = "today 12-m";
-      const property = "";
-      const comparison = keywords.map((q) => ({ keyword: q, geo: geo, time: time}));
-      const keyword = keywords.join();
-
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+    csv('./salary-per-province-2020.csv').then(data => {
+      setData(data);
+      console.log('csv data: ', data);
+    });
+  }, []);
+ 
   return (
     <>
-      <Grid container spacing={9} >
-
+      <Grid container spacing={9}>
         <Grid item xs={6}>
           <Box className={classes.wrapper} mb={3}>
-            <DialogTitle>Web Developer Salary</DialogTitle >
+            <DialogTitle>Web Developer Salary</DialogTitle>
             <Bar data={dataBar} options={optionsBar} />
           </Box>
-     
-
-
-
-
-   
+          
           {/* <Box className={classes.wrapper}>
-            <DialogTitle>Google Trends</DialogTitle>
-
-              <GoogleTrends2
-                type="TIMESERIES"
-                comparison={comparison}
-                keyword={keyword}
-                geo={geo}
-                time={time}
-                property={property}
-              />
-
-            {/* <Safe.script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2674_RC03/embed_loader.js"></Safe.script> 
-            <Safe.script type="text/javascript"> trends.embed.renderExploreWidget("GEO_MAP", {"comparisonItem":[{"keyword":"Salary Canada","geo":"CA","time":"today 12-m"}],"category":0,"property":""}, {"exploreQuery":"q=Salary%20Canada&geo=CA&date=today 12-m","guestPath":"https://trends.google.pt:443/trends/embed/"}); </Safe.script> */}
-          {/* </Box> */}
-     
-
-          <Box className={classes.wrapper}>
             <DialogTitle>Web Developer Skills</DialogTitle>
             <Divider/>
             <Radar data={dataRadar} options={optionsRadar} />
-          </Box>
-
+          </Box> */}
           <Box className={classes.wrapper}>
             <DialogTitle>Web Developer Skills</DialogTitle>
-
-
-            <GoogleTrends2
-            type="GEO_MAP"
-            comparison={comparison}
-            keyword={keyword}
-            geo={"geo"}
-            time={time}
-            property={property}
-            />
-
-
-
           </Box>
-
         </Grid>
-        
+
         <Grid item xs={6}>
           <Box className={classes.wrapper}>
             <img
@@ -159,7 +125,35 @@ function Home() {
             />
           </Box>
         </Grid>
+
+        <Grid item xs={6}>
+          <Box className={classes.wrapper}>
+            {/* <App /> */}
+          </Box>
+        </Grid>
+
       </Grid>
+
+     <Container>
+      <Grid container spacing={8}>
+      
+        <Grid item xs={12} md={4} lg={4} className={classes.wrapper}>
+            <DialogTitle>Web Developer Salary</DialogTitle>
+            <Bar data={dataBar} options={optionsBar} />
+        </Grid>
+
+        <Grid item xs={12} md={4} lg={4} className={classes.wrapper}>    
+          <DialogTitle>Web Developer Salary</DialogTitle>
+            <Bar data={dataBar} options={optionsBar} />     
+        </Grid>
+
+        <Grid item xs={12} md={4} lg={4}>   
+          <DialogTitle>Web Developer Salary</DialogTitle>
+            <Bar data={dataBar} options={optionsBar} />     
+        </Grid>
+        
+      </Grid>
+      </Container>      
     </>
   );
 }

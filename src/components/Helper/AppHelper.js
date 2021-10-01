@@ -26,11 +26,13 @@ export default function useApplicationData() {
   const fetchJobsCustom = async (jobSearch) => {
     setLoading(true);
     setCustomSearch(true);
+    // console.log("*******************",jobSearch)
     const req = await firestore
       .collection('job_posts')
       .orderBy('post_date', 'desc')
       .where("remote", '==', jobSearch.remote)
       .where("position", '==', jobSearch.position)
+      .where("title", '==', jobSearch.title)
       .get();
     const tempJob = req.docs.map((job) => ({...job.data(), id: job.id, post_date: job.data().post_date.toDate()}));
     setJobs(tempJob);

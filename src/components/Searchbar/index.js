@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import {Box, Button, Select, MenuItem, CircularProgress} from '@material-ui/core';
+import {Box, Button, Select, MenuItem, CircularProgress, FilledInput } from '@material-ui/core';
 import { useSearchBarStyles } from '../Helper/StyleHelper';
-import CustomSearch from '../Job/CustomSearch';
 import { Link } from 'react-router-dom';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+import useJobData from './jobData';
+
 
 
 export default (props) => {
   const [loading, setLoading] = useState(false)
   const [jobSearch, setJobSearch] = useState({
+    title: "",
     position: "Full time",
-    remote: "Remote"
+    remote: "Remote",
   })
-  
+  const { items } = useJobData();
 
   const handleChange = (e) => {
     e.persist();
@@ -25,12 +28,35 @@ export default (props) => {
   const search = async () => {
     setLoading(true);
     await props.fetchJobsCustom(jobSearch)
+    console.log('>>>', jobSearch)
     setLoading(false);
   }
-  const classes = useSearchBarStyles();
-  return (
 
+
+  const handleOnSelect = (item) => {    
+    setJobSearch((oldState) => ({
+      ...oldState, 
+      title: item.name,
+    }));
+    console.log('handleonselect>>', item);
+  }
+
+
+  const classes = useSearchBarStyles();
+
+  return (
+    <>
     <Box p={2} mt={-5} mb={2} className={classes.wrapper}>
+      
+      <ReactSearchAutocomplete
+            items={items}
+            onSelect={handleOnSelect}
+            onChange={handleOnSelect}
+            value={handleOnSelect}
+            name="title"
+            autoFocus
+            />
+
       <Select onChange={handleChange} value={jobSearch.position} name="position" disableUnderline variant="filled">
         <MenuItem value="Full time">Full time</MenuItem>
         <MenuItem value="Part time">Part time</MenuItem>
@@ -40,7 +66,6 @@ export default (props) => {
         <MenuItem value="Remote">Remote</MenuItem>
         <MenuItem value="In-Office">In-Office</MenuItem>
       </Select>
-
 
       <Button 
         disabled={loading} 
@@ -56,11 +81,7 @@ export default (props) => {
         </Link>
           )}
       </Button>
-
-
     </Box>
-
+    </>
   )
 }
-
-{/* <Link to={`/customSearch/${jobSearch.position + " " + jobSearch.remote}`} > */}
