@@ -5,6 +5,7 @@ import JobCard from "./JobCard";
 import { useBoxStyles } from '../Helper/StyleHelper';
 import { Bar } from "react-chartjs-2";
 import App from "../GoogleTrends/App";
+import Salary from "../Salary/Salary"
 
 const dataBar = {
   labels: ["DB", "Front-End", "Back-End", "test", "test"],
@@ -83,8 +84,18 @@ export default function CustomSearch(props) {
           ) : (
 
          <>
-         {props.jobs.length && <App item={props.jobs}/>}
-         </>
+
+          {/* <Canada item={props.jobs}/> */}
+          
+          {props.jobs.length && 
+          <Salary item={props.jobs}/>}
+
+          {props.jobs.length && 
+          <App item={props.jobs}/>}
+         
+          </>
+
+
           )}
          
         </Grid>

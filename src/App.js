@@ -1,10 +1,9 @@
 import React from "react";
 import theme from "./theme/theme";
-import { Close as CloseIcon } from '@material-ui/icons';
-import { Box, ThemeProvider, Grid, CircularProgress, Button } from "@material-ui/core";
+import {  ThemeProvider, Grid } from "@material-ui/core";
 import Header from "./components/Header/";
 import Searchbar from "./components/Searchbar";
-//import JobCard from "./components/Job/JobCard";
+
 import About from "./components/About";
 import CustomSearch from "./components/Job/CustomSearch";
 
@@ -12,13 +11,12 @@ import useApplicationData from "./components/Helper/AppHelper";
 import NavBar from "./components/Nav/NavBar";
 
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-//import About from './components/About';
+
 
 import ProfileForm from './components/UserProfile/ProfileForm';
 import NewJobPost from './components/Job/NewJobPost';
 import JobDetails from './components/Job/JobDetails';
 import UserApplyJob from "./components/Job/UserApplyJob";
-import { homeImage } from "./assets/images";
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from "react-alert-template-snackbar-material-ui"
 
@@ -28,11 +26,9 @@ import EmployerDash from "./components/Dashboard/EmployerDash";
 
 
 const options = {
-  // you can also just use 'bottom center'
   position: positions.BOTTOM_CENTER,
   timeout: 5000,
   offset: '30px',
-  // you can also just use 'scale'
   transition: transitions.SCALE
 }
 
@@ -80,11 +76,3 @@ export default () => {
     
   );
 };
-
-
-
-// <Route path="/about">
-//   <About />
-// </Route>
-
-// <

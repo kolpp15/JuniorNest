@@ -13,6 +13,8 @@ import {
   Button,
   Divider,
   Container,
+  Link,
+  Slide
 } from "@material-ui/core";
 import { homeImage } from "../assets/images";
 import { Bar, Radar } from "react-chartjs-2";
@@ -20,6 +22,8 @@ import { useBoxStyles } from "./Helper/StyleHelper";
 import ReactDOM from "react-dom";
 import App from "./GoogleTrends/App";
 import { csv } from 'd3';
+import "animate.css"
+
 //-----------------------------------------------------------
 
 const dataBar = {
@@ -81,13 +85,21 @@ const optionsRadar = {
 };
 
 //-----------------------------------------------------------
+
+
+
+//read csv--------------
 const row = d =>{
   d.TITLEX  = +d.TITLEX
   return d
 }
+//end read csv--------------
+
 function Home() {
 
   const classes = useBoxStyles();
+
+  //read csv--------------
   const [data, setData] = useState([]);
   
   useEffect(() => {
@@ -96,65 +108,62 @@ function Home() {
       console.log('csv data: ', data);
     });
   }, []);
- 
+ //end read csv--------------
   return (
-    <>
-      <Grid container spacing={9}>
-        <Grid item xs={6}>
-          <Box className={classes.wrapper} mb={3}>
-            <DialogTitle>Web Developer Salary</DialogTitle>
-            <Bar data={dataBar} options={optionsBar} />
-          </Box>
-          
-          {/* <Box className={classes.wrapper}>
+    
+     <Box sx={{ flexGrow: 1 }}>
+      <Grid container justify="center" >
+
+        <Grid item xs={12} md={6} lg={6} >
+        
+            <DialogTitle style={{color: "primary"}}><h1>Web Developer Salary</h1></DialogTitle>
+            <Typography style={{paddingLeft: 25, paddingRight: 25}}> Lsorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </Typography>
+            <Button variant="contained" color="primary" style={{marginLeft: 25, marginTop: 30, marginBottom: 50}} disableElevation>
+            <Link to="/" style={{ width: "70px", textDecoration: 'none', color: 'white'  }}>FUCK</Link>
+            </Button>
+
+    
+        </Grid>  
+
+          {/* <Box >
             <DialogTitle>Web Developer Skills</DialogTitle>
             <Divider/>
             <Radar data={dataRadar} options={optionsRadar} />
-          </Box> */}
-          <Box className={classes.wrapper}>
+          </Box> 
+          <Box >
             <DialogTitle>Web Developer Skills</DialogTitle>
-          </Box>
-        </Grid>
-
-        <Grid item xs={6}>
-          <Box className={classes.wrapper}>
+          </Box> */}
+  
+        <Grid item xs={12} md={6} lg={6}>
+ 
             <img
+             class="animate__animated animate__fadeInRight "
+             
               src={homeImage}
               style={{ width: "-webkit-fill-available" }}
               alt="gettheFUCKout"
-            />
-          </Box>
+            />  
+        
         </Grid>
 
-        <Grid item xs={6}>
-          <Box className={classes.wrapper}>
-            {/* <App /> */}
-          </Box>
-        </Grid>
-
-      </Grid>
-
-     <Container>
-      <Grid container spacing={8}>
-      
-        <Grid item xs={12} md={4} lg={4} className={classes.wrapper}>
+        {/* <Grid item xs={12} md={4} lg={4}  >
             <DialogTitle>Web Developer Salary</DialogTitle>
             <Bar data={dataBar} options={optionsBar} />
         </Grid>
 
-        <Grid item xs={12} md={4} lg={4} className={classes.wrapper}>    
+        <Grid item xs={12} md={4} lg={4} >    
           <DialogTitle>Web Developer Salary</DialogTitle>
             <Bar data={dataBar} options={optionsBar} />     
         </Grid>
 
         <Grid item xs={12} md={4} lg={4}>   
           <DialogTitle>Web Developer Salary</DialogTitle>
-            <Bar data={dataBar} options={optionsBar} />     
-        </Grid>
-        
+          <Bar data={dataBar} options={optionsBar} />     
+        </Grid> */}
+       
       </Grid>
-      </Container>      
-    </>
+      </Box>      
+    
   );
 }
 

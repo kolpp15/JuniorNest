@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography, Button, MenuItem } from "@material-ui/core";
 import { Link } from 'react-router-dom';
+import { juniorNest, profilePic } from "../../assets/images";
 
 
 export default (props) => (
@@ -8,22 +9,39 @@ export default (props) => (
     <Grid container justify="center">
       <Grid item xs={10}>
         <Box display="flex" justifyContent="space-between">
-               <Typography
-                variant="h5"
-                component="p"
-                color="white"
-
+              <Typography
+              variant="h5"
+              component="p"
+              color="white"
               >
-              <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>juniorNest</Link>
+                <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>            
+                  <img
+                  src={juniorNest}
+                  style={{ width: "-webkit-fill-available" }}
+                  alt="logoJrNest"
+                  />
+                </Link>
               </Typography>
 
 
           <Box display="flex" direction="row" spacing={2}>
+            <Box display="flex" style={{paddingRight: 10}}>
+              <Typography style={{paddingTop: 10, paddingRight: 10}}>
+                Welcome Emily!
+              </Typography>
+              <img 
+                alt="profile-pic"
+                src={profilePic} 
+                style={{ width: "40px", height: "40px"}}
+                />
+            </Box>
+
             <Box >
               <Button onClick={props.openNewUserProfile} variant="contained" style={{background: "#28C7E9"}} color="white" disableElevation>
               <Link to="/profileForm" style={{ width: "70px", textDecoration: 'none', color: 'white'  }}>Profile </Link>
               </Button>
             </Box>  
+
             <Box pl={2}>
               <Button onClick={props.openNewJobPost} variant="contained"  style={{background: "#28C7E9"}} color="white" disableElevation>
               <Link to="/newPost" style={{ textDecoration: 'none', color: 'white'  }}>
@@ -31,7 +49,8 @@ export default (props) => (
               </Link>
               </Button>
             </Box>
-          </Box>   
+          </Box>  
+
         </Box>
       </Grid>
     </Grid>

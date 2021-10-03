@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Typography, useMediaQuery, Button, useScrollTrigger, Slide, Menu, MenuItem, Box } from "@material-ui/core";
+import { AppBar, Grid, Toolbar, IconButton, Typography, useMediaQuery, Button, useScrollTrigger, Slide, Menu, MenuItem, Box } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from 'react-router-dom';
@@ -47,8 +47,7 @@ const NavBar = (props) => {
     setAnchor(event.currentTarget);
   };
   return (
-    <Box>
-      <HideOnScroll {...props}>
+    <Box >
 
           <AppBar elevation={0} style={{background: "linear-gradient(87deg, #28C7E9 ,#1171ef)"}}>
             
@@ -63,7 +62,7 @@ const NavBar = (props) => {
                     edge="start"
                     aria-label="menu"
                     onClick={handleMenu}
-                    style={{justifyContent: "right", marginRight: "5rem"}}
+                    style={{justifyContent: "right"}}
                   >
                     <MenuIcon  style={{fill:"white"}} />
                   </IconButton>
@@ -159,8 +158,6 @@ const NavBar = (props) => {
             
           </AppBar>
 
-
-      </HideOnScroll>
     </Box>
   );
 };

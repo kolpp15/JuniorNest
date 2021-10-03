@@ -56,7 +56,7 @@ export default function About() {
             Erminio
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Weird Brazilian Guy. So polite but little funny guy 
+          Weird Brazilian Guy. So RUDE but little funny guy 
           </Typography>
         </CardContent>
 

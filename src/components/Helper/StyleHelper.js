@@ -3,15 +3,15 @@ import { makeStyles } from '@material-ui/core'
 const useBoxStyles = makeStyles({
   wrapper: {
     backgroundColor: "#fff",
-    display: "flex",
-    flexDirection: "column",
-    padding:"0px 10px 10px 10px",
+    //display: "flex",
+    //flexDirection: "column",
+    padding:"0px 15px 15px 15px",
     boxShadow: "0px 1px 5px rgba(0, 0, 0, 0.1)",
     borderRadius: "5px",
     "& > *": {
-      flex: 1,
+      //flex: 1,
       height: "45px",
-      margin: "8px",
+      margin: "0px",
     },
   },
 })

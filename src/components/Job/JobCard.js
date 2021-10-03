@@ -13,7 +13,7 @@ export default (props) => {
 
   const classes = useJobCardStyle();
   return (
-    <Box p={2} className={classes.wrapper}>
+    <Box p={2}  className={classes.wrapper}>
       <Grid container alignItems="center">
         <Grid item xs>
           <Typography variant="subtitle1">Job Title: {props.title}</Typography>

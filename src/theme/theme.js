@@ -18,7 +18,7 @@ export default createMuiTheme({
   overrides: {
     MuiDialogActions: {
       root: {
-        padding: "8px 24px 16px 24px",
+        padding: "18px 24px 16px 24px",
       },
     },
     MuiButton: {
@@ -42,12 +42,27 @@ export default createMuiTheme({
     MuiFilledInput: {
       root: {
         backgroundColor: "white",
+        "&:hover": {
+          backgroundColor: "white",
+        },
+        "&.Mui-focused": {
+          backgroundColor: "white",
+        },
       },
       input: {
-        height: "49px",
-        padding: "0px 0 0 10px",
+        height: "50px",
+        padding: "0px 0px 0px 10px",
         backgroundColor: "white",
       },
     },
+    MuiAppBar: {
+      root: {
+        textTransform: "none",
+
+        padding: "0px 95px 0px 0px",
+      },
+    },
   },
+  
 });
+
