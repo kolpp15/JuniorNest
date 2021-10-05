@@ -1,13 +1,16 @@
 import React from 'react';
 import { CardActionArea, Typography, CardMedia, CardContent, Card, makeStyles, Box, Grid } from '@material-ui/core';
 import { LinkedIn, GitHub } from '@material-ui/icons';
-import { danFace, erminioFace } from '../assets/images';
+import { danFace, erminioFace } from '../assets/images'; 
 
 
 export default function About() {
 
   return (
     <>
+    <Typography variant="caption" key="job-title-label">
+        <h1 className='title'>The Team</h1>
+    </Typography>
     
     <Grid container style={{textAlign: 'center'}} spacing={8}>   
 
@@ -85,7 +88,7 @@ export default function About() {
             Brian
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Worldwide Mr. Perfect
+            Just a Perfect MFK 
           </Typography>
         </CardContent>
 

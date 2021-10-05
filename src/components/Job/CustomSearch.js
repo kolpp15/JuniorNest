@@ -5,7 +5,7 @@ import JobCard from "./JobCard";
 import { useBoxStyles } from '../Helper/StyleHelper';
 import { Bar } from "react-chartjs-2";
 import App from "../GoogleTrends/App";
-import Salary from "../Salary/Salary"
+import Salary from "../Salary/Salary";
 
 const dataBar = {
   labels: ["DB", "Front-End", "Back-End", "test", "test"],
@@ -53,7 +53,7 @@ export default function CustomSearch(props) {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid item xs={8}>
+        <Grid item xs={12} sm={12} md={8} lg={8}>
           {props.loading ? (
             <Box display="flex" justifyContent="center">
               <CircularProgress />
@@ -76,7 +76,7 @@ export default function CustomSearch(props) {
           )}
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={12} md={4} lg={4}>
         {props.loading ? (
             <Box display="flex" justifyContent="center">
               <CircularProgress />

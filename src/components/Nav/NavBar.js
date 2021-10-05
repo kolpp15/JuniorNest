@@ -105,15 +105,6 @@ const NavBar = (props) => {
                       style={{color:"#637DBB"}} 
                     >
                       <Typography variant="h6"> 
-                      <Link to="/junior" style={{ textDecoration: 'none', color: '#637DBB'  }}>Junior</Link>
-                      </Typography>
-                    </MenuItem>
-
-                    <MenuItem
-                      onClick={() => setAnchor(null)}
-                      style={{color:"#637DBB"}} 
-                    >
-                      <Typography variant="h6"> 
                       <Link to="/employer" style={{ textDecoration: 'none', color: '#637DBB'  }}>Employer </Link>
                       </Typography>
                     </MenuItem>
@@ -137,13 +128,6 @@ const NavBar = (props) => {
                     color="white"
                   >
                     <Link to="/customSearch" style={{ textDecoration: 'none', color: 'white'  }}>Search Jobs </Link>
-                  </Button>
-
-                  <Button
-                    variant="text"
-                    color="white"
-                  >
-                    <Link to="/junior" style={{ textDecoration: 'none', color: 'white'  }}>Junior </Link>
                   </Button>
 
                   <Button

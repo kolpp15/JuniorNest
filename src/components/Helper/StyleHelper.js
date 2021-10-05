@@ -35,6 +35,7 @@ const useJobCardStyle = makeStyles((theme) => ({
   wrapper: {
     backgroundColor: "white",
     border: "1px solid #e8e8e8",
+    borderRadius: "5px",
     cursor: "pointer",
     transition: ".3s",
     "&:hover": {

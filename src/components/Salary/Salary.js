@@ -101,7 +101,7 @@ export default function Salary(props) {
 
   return (
     <>
-    <Grid style={{marginBottom: 25}}>
+    <Grid style={{marginBottom: 25 }}>
       <Card >
         <CardActionArea >
           
@@ -120,7 +120,7 @@ export default function Salary(props) {
       <CardActionArea >
         
           <Grid lg={9}>
-          <DialogTitle>Median Salary <MonetizationOn style={{marginTop: 15}}/></DialogTitle>
+          <DialogTitle>Median Salary <MonetizationOn/></DialogTitle>
           </Grid>
           <Grid lg={3}>
           </Grid>
@@ -139,7 +139,7 @@ export default function Salary(props) {
         
           <div className='header'>
           <DialogTitle>Salary for Related Jobs </DialogTitle>
-          <Typography  color="text.secondary" style={{paddingLeft: 25, paddingBottom: 25}}>
+          <Typography  color="text.secondary" style={{paddingLeft: 25, paddingBottom: 25, textAlign: 'lef'}}>
           {job1} {job1_salary} <br/>
           {job2} {job2_salary} <br/>
           {job3} {job3_salary} <br/>

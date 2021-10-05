@@ -25,7 +25,7 @@ export default (props) => (
 
 
           <Box display="flex" direction="row" spacing={2}>
-            <Box display="flex" style={{paddingRight: 10}}>
+            <Box display="flex" style={{paddingRight: 10, alignItems: "center"}}>
               <Typography style={{paddingTop: 10, paddingRight: 10}}>
                 Welcome Emily!
               </Typography>
@@ -36,13 +36,13 @@ export default (props) => (
                 />
             </Box>
 
-            <Box >
+            <Box style={{alignSelf: "center"}} >
               <Button onClick={props.openNewUserProfile} variant="contained" style={{background: "#28C7E9"}} color="white" disableElevation>
               <Link to="/profileForm" style={{ width: "70px", textDecoration: 'none', color: 'white'  }}>Profile </Link>
               </Button>
             </Box>  
 
-            <Box pl={2}>
+            <Box pl={2} style={{alignSelf: "center"}} >
               <Button onClick={props.openNewJobPost} variant="contained"  style={{background: "#28C7E9"}} color="white" disableElevation>
               <Link to="/newPost" style={{ textDecoration: 'none', color: 'white'  }}>
                 New Post

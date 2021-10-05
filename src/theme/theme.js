@@ -5,6 +5,7 @@ const secondary = "#5E72E4";
 
 export default createMuiTheme({
   typography: {
+    color:"#9EA7AD",
     fontFamily: "Poppins, sans-serif",
   },
   palette: {

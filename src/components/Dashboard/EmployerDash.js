@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core";
+import { Card, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 //---------------------------------------------- Monthly Data
 const genData = () => ({
-  labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+  labels: ['OCT 3', 'OCT 4', 'OCT 5', 'OCT 6', 'OCT 7'],
 
   datasets: [
     {
@@ -12,15 +13,15 @@ const genData = () => ({
       label: 'Applications',
       backgroundColor: `rgb(255, 99, 132)`,
       borderWidth: 2,
-      data: [10, 2, 5, 8, 10, 3, 5, 9, 11, 4, 6, 2],
+      data: [0, 0, 0, 0, 2]
     },
-    {
-      type: 'bar',
-      label: 'Hired',
-      backgroundColor: `rgb(54, 162, 235)`,
-      borderWidth: 2,
-      data: [3, 0, 1, 2, 4, 0, 1, 2, 4, 0, 1, 0],
-    },
+    // {
+    //   type: 'bar',
+    //   label: 'Hired',
+    //   backgroundColor: `rgb(54, 162, 235)`,
+    //   borderWidth: 2,
+    //   data: [3, 0, 1, 2, 4, 0, 1, 2, 4, 0, 1, 0],
+    // },
   ],
 });
 
@@ -43,9 +44,9 @@ function createData(name, email, phone, linkedin, resume) {
 }
 
 const applicants = [
-  createData('Brian', 'abc@abc.com', "7781234567", "kolpp15", "LINK"),
-  createData('Dan', 'cde@abc.com', "7781234567", "abc", "LINK"),
-  createData('Erminio', 'fge@abc.com', "7781234567", "def", "LINK"),
+  createData('Emily', 'emily@gmail.com', "7781234567", "emilygithub", "LINK"),
+  // createData('Dan', 'cde@abc.com', "7781234567", "abc", "LINK"),
+  // createData('Erminio', 'fge@abc.com', "7781234567", "def", "LINK"),
 ];
 
 // ------------------------------------------- Render
@@ -61,19 +62,58 @@ export default function EmployerDash() {
 
   return (
     <>
-    <h1 className='title'>Dashboard</h1>
+    <Grid container spacing={3}>
+      <Grid item xs={8}>
+      <Typography variant="caption" key="job-title-label">
+        <h1 className='title'>Job Posts</h1>
+      </Typography>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+
+          <TableHead>
+            <TableRow>
+              <TableCell><strong>Job Title</strong></TableCell>
+              <TableCell align="left"><strong>Contract Type</strong></TableCell>
+              <TableCell align="left"><strong>Location</strong></TableCell>
+              <TableCell align="left"><strong>Skills</strong></TableCell>
+              <TableCell align="left"><strong>Salary</strong></TableCell>
+              <TableCell align="left"><strong>Description</strong></TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody >
+            <TableRow>
+              <TableCell>
+              <Typography>
+                  <Link to="/jobDetails/dZAu7ors4R9QndBKm3Hx" style={{ textDecoration: 'none', color: '#637DBB' }}>Web Developer</Link>
+                </Typography>
+              </TableCell>
+              <TableCell align="left">Full Time</TableCell>
+              <TableCell align="left">Remote</TableCell>
+              <TableCell align="left">React, JS, Firebase</TableCell>
+              <TableCell align="left">$60,000</TableCell>
+              <TableCell align="left">We are looking for a talented Junior!</TableCell>
+            </TableRow>
+          </TableBody>
+
+        </Table>
+      </TableContainer>
+
+      <Typography variant="caption" key="job-title-label">
+        <h1 className='title'>Applicants</h1>
+      </Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell><strong>Applicant Name</strong></TableCell>
-              <TableCell align="right"><strong>Email</strong></TableCell>
-              <TableCell align="right"><strong>Phone</strong></TableCell>
-              <TableCell align="right"><strong>LinkedIn</strong></TableCell>
-              <TableCell align="right"><strong>Resume</strong></TableCell>
+              <TableCell align="left"><strong>Email</strong></TableCell>
+              <TableCell align="left"><strong>Phone</strong></TableCell>
+              <TableCell align="left"><strong>LinkedIn</strong></TableCell>
+              <TableCell align="left"><strong>Resume</strong></TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody >
             {applicants.map((applicant) => (
               <TableRow
                 key={applicant.name}
@@ -82,21 +122,33 @@ export default function EmployerDash() {
                 <TableCell component="th" scope="row">
                   {applicant.name}
                 </TableCell>
-                <TableCell align="right">{applicant.email}</TableCell>
-                <TableCell align="right">{applicant.phone}</TableCell>
-                <TableCell align="right">{applicant.linkedin}</TableCell>
-                <TableCell align="right">{applicant.resume}</TableCell>
+                <TableCell align="left">{applicant.email}</TableCell>
+                <TableCell align="left">{applicant.phone}</TableCell>
+                <TableCell align="left">{applicant.linkedin}</TableCell>
+                <TableCell align="left">
+                  <Typography>
+                    <a href="https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/files%2Ffaba5031-08ba-4b2a-be99-f1bb1a600213?alt=media&token=a9a74eb9-d8ff-4c4a-bda4-135f916ab6d6" target="_blank" style={{ textDecoration: 'none', color: '#637DBB' }}>LINK</a>
+                  </Typography>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      </Grid>
 
     
-      <div className='header'>
-        <h1 className='title'>Monthly Applicants</h1>
-      </div>
-      <Bar data={data} options={options} />
+
+      <Grid item xs={4} >
+        <Typography variant="caption" key="job-title-label">
+          <h1 className='title'>Applications</h1>
+        </Typography>
+          <Card>
+            <Bar data={data} options={options} style={{padding: 10}}/>
+          </Card>
+      </Grid>
+
+      </Grid>
     </>
   )
 }
