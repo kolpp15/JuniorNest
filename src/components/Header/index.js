@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, Grid, Typography, Button, MenuItem } from "@material-ui/core";
 import { Link } from 'react-router-dom';
-import { juniorNest, profilePic } from "../../assets/images";
+import { juniorNest, profilePic }        from "../../assets/images";
+import { Box, Grid, Typography, Button } from "@material-ui/core";
 
 
 export default (props) => (

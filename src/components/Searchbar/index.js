@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import {Box, Button, Select, MenuItem, CircularProgress, FilledInput } from '@material-ui/core';
-import { useSearchBarStyles } from '../Helper/StyleHelper';
-import { Link } from 'react-router-dom';
+import React, { useState }         from 'react';
+import { Link }                    from 'react-router-dom';
+import useJobData                  from './jobData';
+import { useSearchBarStyles }      from '../Helper/StyleHelper';
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import useJobData from './jobData';
+import {Box, Button, Select, MenuItem, CircularProgress } from '@material-ui/core';
 
 
 
 export default (props) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading]     = useState(false)
   const [jobSearch, setJobSearch] = useState({
-    title: "",
+    title   : "",
     position: "Full time",
-    remote: "Remote",
+    remote  : "Remote",
   })
   const { items } = useJobData();
 

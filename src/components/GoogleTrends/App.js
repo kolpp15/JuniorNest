@@ -1,11 +1,8 @@
 import React from "react";
 import GoogleTrends from "./GoogleTrends";
 
-
-
 export default function App(props) {
   let jobTitle = props.item[0].title
-  // console.log('this is the values', jobTitle);
 
   if (!jobTitle) {
     jobTitle = 'jobs'
@@ -15,9 +12,8 @@ export default function App(props) {
   
   return (
     <>
-      
+
       <div id="widget">
-        {/* {console.log("---------------", props)} */}
         <GoogleTrends
           type="RELATED_TOPICS"
           keyword={jobTitle}

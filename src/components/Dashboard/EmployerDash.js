@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Card, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from "@material-ui/core";
+import { Bar }  from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
+import { Card, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from "@material-ui/core";
 
 //---------------------------------------------- Monthly Data
 const genData = () => ({
@@ -15,13 +15,6 @@ const genData = () => ({
       borderWidth: 2,
       data: [0, 0, 0, 0, 2]
     },
-    // {
-    //   type: 'bar',
-    //   label: 'Hired',
-    //   backgroundColor: `rgb(54, 162, 235)`,
-    //   borderWidth: 2,
-    //   data: [3, 0, 1, 2, 4, 0, 1, 2, 4, 0, 1, 0],
-    // },
   ],
 });
 
@@ -45,8 +38,6 @@ function createData(name, email, phone, linkedin, resume) {
 
 const applicants = [
   createData('Emily', 'emily@gmail.com', "7781234567", "emilygithub", "LINK"),
-  // createData('Dan', 'cde@abc.com', "7781234567", "abc", "LINK"),
-  // createData('Erminio', 'fge@abc.com', "7781234567", "def", "LINK"),
 ];
 
 // ------------------------------------------- Render

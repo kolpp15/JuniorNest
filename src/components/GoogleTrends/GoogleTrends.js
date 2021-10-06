@@ -1,6 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Script from "react-load-script";
+import React    from "react";
+import Script   from "react-load-script";
 
 export default function GoogleTrends({ type, keyword, url }) {
   const handleScriptLoad = _ => {

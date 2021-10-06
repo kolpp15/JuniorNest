@@ -1,54 +1,41 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Grid, FilledInput, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, CircularProgress } from "@material-ui/core";
-import { useParams } from "react-router";
+import emailjs                from "emailjs-com";
+import { useAlert }           from "react-alert";
+import { useParams }          from "react-router";
 import { firestore, storage } from "../../Firebase/config";
-// import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { useAlert } from "react-alert";
-import emailjs from "emailjs-com";
-import { v4 as uuid } from 'uuid';
+import { Box, Grid, FilledInput, DialogTitle, DialogContent, DialogActions, DialogContentText, Button, CircularProgress, Card } from "@material-ui/core";
+// import { v4 as uuid } from 'uuid';
 
 
 const initState = {
-  cover_letter: "", 
-  status: "Open",
-  apply_date: "",
-  job_post_id: "",
-  user_id: "GMtfe81Z9fbhkBCXKGpM",
+  cover_letter     : "", 
+  status           : "Open",
+  apply_date       : "",
+  job_post_id      : "",
+  user_id          : "GMtfe81Z9fbhkBCXKGpM",
   questions_answers: {},
 };
 
 const emailJsInfo = {
-  email: "erminiomendes@gmail.com",
-  first_name: "Emily",
-  last_name: "Mendes",
-  company_name: "Amazon",
-  position: "Web Developer",
-  phone: "6046126456",
-  resume_id: "faba5031-08ba-4b2a-be99-f1bb1a600213",
-  // resume_url: storage.ref('files').child("faba5031-08ba-4b2a-be99-f1bb1a600213").getDownloadURL(),
+  email       : "erminiomendes@gmail.com",
+  first_name  : "Emily",
+  last_name   : "Mendes",
+  company_name: "Company ABC",
+  position    : "Web Developer",
+  phone       : "6046126456",
+  resume_id   : "faba5031-08ba-4b2a-be99-f1bb1a600213",
 }
 
 
-
-
-// const resumeId = uuid()
-// const storageRef = storage.ref('files').child(resumeId);
-// storageRef.getDownloadURL().then((url) => {
-//   //fileRef.set(url);
-//   //const newState = [...fileUrl, { resumeId, url }];
-//   //setFileUrl(newState);
-// setFileUrl(url);
-// });
-
 export default (props) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading]           = useState(false);
+  const [jobInfo, setJobInfo]           = useState([]);
+  const [fileUrl, setFileUrl]           = useState([]);
   const [applyDetails, setApplyDetails] = useState(initState);
-  const [jobInfo, setJobInfo] = useState([]);
-  const [fileUrl, setFileUrl] = useState([]);
 
-  const params = useParams();
+  const params      = useParams();
   const hiddenJobId = params.jobId;
-  const form = useRef();
+  const form        = useRef();
 
 
   storage.ref('files').child("faba5031-08ba-4b2a-be99-f1bb1a600213").getDownloadURL()
@@ -85,9 +72,6 @@ export default (props) => {
     }
   };
 
-
-
-
   const handleSubmit = async () => {
     setLoading(true);
     let answersObj = {};
@@ -118,6 +102,7 @@ export default (props) => {
 
 
   return (
+    <Card>
     <Box>
    
       <DialogTitle>Submit Application</DialogTitle>
@@ -141,7 +126,6 @@ export default (props) => {
                   <FilledInput
                     onChange={handleChange}
                     name={`answer${i}`}
-                    // value={userDetails.description}
                     fullWidth
                     multiline
                     rows={4}
@@ -159,7 +143,6 @@ export default (props) => {
           <FilledInput
             onChange={handleChange}
             name="cover_letter"
-            // value={userDetails.description}
             placeholder="Coverletter"
             fullWidth
             multiline
@@ -198,5 +181,6 @@ export default (props) => {
       </DialogActions>
 
     </Box>
+    </Card>
   );
 };

@@ -1,48 +1,33 @@
-import React from "react";
-import { AppBar, Grid, Toolbar, IconButton, Typography, useMediaQuery, Button, useScrollTrigger, Slide, Menu, MenuItem, Box } from "@material-ui/core";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import React    from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from 'react-router-dom';
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { AppBar, Toolbar, IconButton, Typography, useMediaQuery, Button, Menu, MenuItem, Box } from "@material-ui/core";
 
 
 // ------------------------------------------------------------------------ HELPER
 
-// LOCAL-STYLING
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height: "33px",
   },
   menuButton: {
-    // marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
-    // marginLeft: theme.spacing(2),
   },
-
-
 }));
-
-function HideOnScroll(props) {
-  const { children } = props;
-  const trigger = useScrollTrigger();
-
-  return (
-    <Slide appear={false} direction={"down"} in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
 
 // ------------------------------------------------------------------------ COMPONENT
 
 const NavBar = (props) => {
-  const classes = useStyles();
+  const classes             = useStyles();
   const [anchor, setAnchor] = React.useState(null);
-  const open = Boolean(anchor);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const open                = Boolean(anchor);
+  const theme               = useTheme();
+  const isMobile            = useMediaQuery(theme.breakpoints.down("sm"));
+
   const handleMenu = (event) => {
     setAnchor(event.currentTarget);
   };
@@ -113,7 +98,6 @@ const NavBar = (props) => {
                 </>
 
               ) : (
-                // <div style={{marginRight: "5rem"}}>
                 <div className={classes.links}>
 
                   <Button

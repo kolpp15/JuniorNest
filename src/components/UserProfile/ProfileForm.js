@@ -1,31 +1,27 @@
 import React, { useState } from "react";
-import { Box, Grid, FilledInput, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
-import Upload from "./Upload";
-import { Close as CloseIcon } from "@material-ui/icons";
-import { useAlert } from "react-alert";
-import { storage } from "../../Firebase/config";
-import { v4 as uuid } from 'uuid';
+import { storage }         from "../../Firebase/config";
+import { useAlert }        from "react-alert";
+import { v4 as uuid }      from 'uuid';
+import { Box, Grid, FilledInput, DialogTitle, DialogContent, DialogActions, Typography, Button, CircularProgress, Card } from "@material-ui/core";
 
 
 const initState = {
-  first_name: "", 
-  last_name: "", 
-  phone: "", 
-  email: "",
-  skill: "",
-  education: "",
+  first_name : "", 
+  last_name  : "", 
+  phone      : "", 
+  email      : "",
+  skill      : "",
+  education  : "",
   description: "",
-  linkedin: "",
-  user_id: "GMtfe81Z9fbhkBCXKGpM",
-  resume_id: "",
+  linkedin   : "",
+  user_id    : "GMtfe81Z9fbhkBCXKGpM",
+  resume_id  : "",
 }
 
 export default (props) => {
-  const [loading, setLoading] = useState(false)
-  const [userDetails, setUserDetails] = useState(initState)
-  const [fileUpload, setFileUpload] = useState(null);
-
-  console.log('>>>>', userDetails);
+  const [loading, setLoading]         = useState(false);
+  const [userDetails, setUserDetails] = useState(initState);
+  const [fileUpload, setFileUpload]   = useState(null);
 
   const alert = useAlert();
   
@@ -59,6 +55,7 @@ export default (props) => {
 
   return (
     <>
+    <Card>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center"> 
           User Information
@@ -142,19 +139,20 @@ export default (props) => {
             fullWidth multiline rows={4} />
           </Grid>          
           <FilledInput name="user_id" value={userDetails.user_id} type="hidden" />
-          {/* <FilledInput name="resume_url" value={resumeUrl} type="hidden" />  */}
 
           <Grid item xs={6}>
 
           <Box> 
             Resume: <input type="file" onChange={readFiles} />
           </Box>
+
+          <Typography variant="caption" style={{color: "red"}}><br></br>*Required fields</Typography>
           </Grid>
 
           <Grid item xs={6}>
           <DialogActions>      
-            <Box color="red" width="100%" display="flex" justifyContent="space-between" alignItems="center">
-               <Typography variant="caption">*Required fields</Typography>
+            <Box width="100%" display="flex" justifyContent="end">
+               
                 <Button onClick={handleSubmit} variant="contained" disableElevation color="primary" disabled={loading}>
                   {loading ? (<CircularProgress color="secondary" size={22} />
                   ) : (
@@ -169,7 +167,7 @@ export default (props) => {
         </Grid>
       </DialogContent>
 
-
+    </Card>                  
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
-import { CardActionArea, Typography, CardMedia, CardContent, Card, makeStyles, Box, Grid } from '@material-ui/core';
-import { LinkedIn, GitHub } from '@material-ui/icons';
+import { LinkedIn, GitHub }     from '@material-ui/icons';
 import { danFace, erminioFace } from '../assets/images'; 
+import { CardActionArea, Typography, CardMedia, CardContent, Card, Grid } from '@material-ui/core';
 
 
 export default function About() {
@@ -15,7 +15,7 @@ export default function About() {
     <Grid container style={{textAlign: 'center'}} spacing={8}>   
 
     <Grid item xs={4} >
-    <Card sx={{ maxWidth: 345 }} style={{color: "purple", height: "400px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{color: "#617A8E", minHeight: "500px"}}>
       <CardActionArea>
         <CardMedia
           
@@ -31,7 +31,7 @@ export default function About() {
             Dan
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Weird Korean Guy
+            Full stack web developer transitioning from e-commerce industry. I enjoy making smooth functions and code and am excited to improve my skills in development while creating products that enrich the community.
           </Typography>
         </CardContent>
 
@@ -45,7 +45,7 @@ export default function About() {
     </Grid>
 
     <Grid item xs={4}>
-    <Card sx={{ maxWidth: 345 }} style={{color: "#178DED", height: "400px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{color: "#617A8E", minHeight: "500px"}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -59,7 +59,9 @@ export default function About() {
             Erminio
           </Typography>
           <Typography variant="body2" color="text.secondary">
-          Weird Brazilian Guy. So RUDE but little funny guy 
+          Eight years working experience as a system analyst at Bank Itaú Unibanco S.A. (Brazil). I am creative, innovative, self-motivated, and a forward-thinker. Extremely collaborative with colleagues and clients, fostering relationships of respect.
+
+
           </Typography>
         </CardContent>
 
@@ -73,7 +75,7 @@ export default function About() {
     </Grid>
 
     <Grid item xs={4}>
-    <Card sx={{ maxWidth: 345 }} style={{color: "#f22b79", height: "400px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{color: "#617A8E", minHeight: "500px"}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -88,7 +90,7 @@ export default function About() {
             Brian
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Just a Perfect MFK 
+            Full Stack web developer with experience in the financial, education, and fashion industry. I am passionate about learning and developing user-friendly web applications and am excited to work collaboratively with a team to develop further as a coder.
           </Typography>
         </CardContent>
 

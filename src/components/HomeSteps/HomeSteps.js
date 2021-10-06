@@ -1,20 +1,28 @@
 import React from 'react'
-import { Grid, Typography, Box, DialogTitle, Button, Card, CardActionArea, CardContent, CardMedia } from "@material-ui/core";
 import { PermIdentity, Search, Send } from '@material-ui/icons';
-import { danFace, erminioFace } from '../../assets/images'; 
+import { Grid, Typography, Card, CardActionArea, CardContent, CardMedia } from "@material-ui/core";
+import { flyingPaper } from "../../assets/images";
 
 const updateProfileImg = 'https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/UpdateProfile.png?alt=media&token=71c18d52-2cb7-4862-9301-035e10901f22'
-const searchJobImg = 'https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/SearchJob.png?alt=media&token=d5250655-1fdd-49ed-a768-33183ae72377'
-const applyJobImg = 'https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/ApplyJob.png?alt=media&token=e77696ff-7c3e-4308-a0df-9c9ec20f3b33'
+const searchJobImg     = 'https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/SearchJob.png?alt=media&token=d5250655-1fdd-49ed-a768-33183ae72377'
+const applyJobImg      = 'https://firebasestorage.googleapis.com/v0/b/junior-nest.appspot.com/o/ApplyJob.png?alt=media&token=e77696ff-7c3e-4308-a0df-9c9ec20f3b33'
 
 export default function HomeSteps() {
   return (
 
 
-
-    <Grid container style={{textAlign: 'center', marginTop: 100}} spacing={8}>   
+    <Grid container style={{textAlign: 'center',}} spacing={8}>   
+    <Grid item xs={12} md={12} lg={12}>
+    <img
+             class="animate__animated animate__fadeInLeft "
+              src={flyingPaper}
+              style={{ width: "70%", marginTop:"80px" }}
+              alt="imgHome"
+          />  
+    
+    </Grid>
     <Grid item xs={4} >
-    <Card sx={{ maxWidth: 345 }} style={{height: "100px", height: "300px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{height: "300px"}}>
       <CardActionArea>
       <CardMedia
           component="img"
@@ -37,7 +45,7 @@ export default function HomeSteps() {
     </Grid>
 
     <Grid item xs={4} >
-    <Card sx={{ maxWidth: 345 }} style={{height: "100px", height: "300px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{height: "300px"}}>
       <CardActionArea>
       <CardMedia
           component="img"
@@ -60,7 +68,7 @@ export default function HomeSteps() {
     </Grid>
 
     <Grid item xs={4} >
-    <Card sx={{ maxWidth: 345 }} style={{height: "100px", height: "300px"}}>
+    <Card sx={{ maxWidth: 345 }} style={{height: "300px"}}>
       <CardActionArea>
       <CardMedia
           component="img"

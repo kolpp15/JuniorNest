@@ -1,25 +1,24 @@
 import React, { useState } from "react";
-import { Box, Grid, FilledInput, Select, MenuItem, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress } from "@material-ui/core";
-import { Close as CloseIcon } from "@material-ui/icons"
 import './AddField.css'
-import { AddCircle, RemoveCircle } from "@material-ui/icons"
 import { useAlert } from "react-alert";
+import { AddCircle, RemoveCircle } from "@material-ui/icons"
+import { Box, Grid, FilledInput, Select, MenuItem, DialogTitle, DialogContent, DialogActions, Typography, Button, IconButton, CircularProgress, Card } from "@material-ui/core";
 
 const initState = {
-  title: "", // we have to add this // webdeveloper
-  position: "Full time", // change this in db // full time, part time, contract
-  remote: "Remote", // need to add this (boolean) // remote, in-office
-  salary: "",
-  skill: "",
-  education: "",
+  title      : "", 
+  position   : "Full time", 
+  remote     : "Remote", 
+  salary     : "",
+  skill      : "",
+  education  : "",
   description: "",
-  post_date: "",
-  company_id: "mCRVmyjCLM2FPIZ57Dnw",
-  questions: {}
+  post_date  : "",
+  company_id : "mCRVmyjCLM2FPIZ57Dnw",
+  questions  : {}
 }
 
 export default (props) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading]       = useState(false)
   const [jobDetails, setJobDetails] = useState(initState)
   const [formValues, setFormValues] = useState([{ questions: "" }])
 
@@ -39,9 +38,6 @@ export default (props) => {
   }
 
   const handleSubmit = async () => {
-    // for (const field in jobDetails) {
-    //   if (typeof jobDetails[field] === "string"  && !jobDetails[field]) return;
-    // }
 
     setLoading(true);
 
@@ -77,9 +73,7 @@ export default (props) => {
   
   return (
     <>
-    {/* <Dialog open={props.newJobPost} fullWidth> */}
-
-    
+    <Card>
       <DialogTitle>
         <Box display="flex" justifyContent="space-between" alignItems="center"> 
           Post Job
@@ -166,7 +160,7 @@ export default (props) => {
           </Button>
         </Box>
       </DialogActions> 
-    {/* </Dialog> */}
+    </Card>
     </>
   );
 };

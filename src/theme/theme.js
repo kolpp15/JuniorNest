@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core";
 
-const primary = "#5E72E4";
+const primary   = "#5E72E4";
 const secondary = "#5E72E4";
 
 export default createMuiTheme({
@@ -60,7 +60,7 @@ export default createMuiTheme({
       root: {
         textTransform: "none",
 
-        padding: "0px 95px 0px 0px",
+        padding: "0px 125px 0px 0px",
       },
     },
   },

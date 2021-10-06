@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { differenceInBusinessDays }      from 'date-fns'
+import { useJobCardStyle }               from '../Helper/StyleHelper.js';
 import { Box, Typography, Grid, Button } from "@material-ui/core";
-import { useJobCardStyle } from '../Helper/StyleHelper.js';
-import { differenceInBusinessDays } from 'date-fns'
-import { Link, Switch, Route } from 'react-router-dom';
-import JobDetails from "./JobDetails.js";
-import useApplicationData from "../Helper/AppHelper";
 
 
 export default (props) => {
-
-
 
   const classes = useJobCardStyle();
   return (

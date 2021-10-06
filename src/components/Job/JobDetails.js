@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  DialogTitle,
-  DialogContent,
-  Typography,
-  Button,
-  Grid,
-  Card
-} from "@material-ui/core";
+import Salary              from "../Salary/Salary";
+import { Link }            from "react-router-dom";
+import { useParams }       from "react-router";
+import { firestore }       from "../../Firebase/config";
 import { useViewJobStyle } from "../Helper/StyleHelper";
-import { useParams } from "react-router";
-import { firestore, app } from "../../Firebase/config";
-import { Link } from "react-router-dom";
-import App from "../GoogleTrends/App";
-import Salary from "../Salary/Salary";
-import { FormatAlignRight } from "@material-ui/icons";
+import { Box, DialogTitle, DialogContent, Typography, Button, Grid, Card } from "@material-ui/core";
 
 
 export default (props) => {
   
-  const [applyJob, setApplyJob] = useState(false);
   const [jobInfo, setJobInfo] = useState([]);
-  const params = useParams();
-  const classes = useViewJobStyle();
+  const params                = useParams();
+  const classes               = useViewJobStyle();
 
   const fetchUniqueJobDetails = async (inputId) => {
     const jobInfo = firestore.collection("job_posts").doc(inputId.jobId);
@@ -41,7 +30,7 @@ export default (props) => {
     
       <Grid container spacing={3} >
         <Grid item xs={12} sm={12} md={8} lg={8}>
-        <Card style={{height: 370}}>
+        <Card >
           <Box p={2} className={classes.wrapper}>
 
             <DialogTitle>
