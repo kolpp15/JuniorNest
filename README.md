@@ -3,16 +3,16 @@ This application is created with modern tools and techniques by using React.
 
 # Screenshots
 ### Homepage
-!["Home"]()
+!["Home"](https://github.com/erminiomendes/juniorNest/blob/main/docs/home.gif?raw=true)
 
 ### Apply Job
-!["Apply"]()
+!["Apply"](https://github.com/erminiomendes/juniorNest/blob/main/docs/apply-job.gif?raw=true)
 
 ### Update Profile / Job Post
-!["Update"]()
+!["Update"](https://github.com/erminiomendes/juniorNest/blob/main/docs/post.gif?raw=true)
 
 ### Employer Dashboard
-!["Dash"]()
+!["Dash"](https://github.com/erminiomendes/juniorNest/blob/main/docs/dash.gif?raw=true)
 
 # Getting Started
 1. Fork this repository, then clone your fork of this repository.
