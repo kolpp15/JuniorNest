@@ -1,5 +1,5 @@
 # JuniorNest
-This application is created with modern tools and techniques by using React.
+JuniorNest is a website only for job seekers having less than 2 years of experience. It is a dynamic and simple to use website where users can search, get up-to-date information, and apply for a job instantly. This website is created with modern tools and techniques by using React.
 
 # Screenshots
 ### Homepage
@@ -21,18 +21,18 @@ This application is created with modern tools and techniques by using React.
 4. Go to http://localhost:3000/ in your browser.
 5. Pages (Junior)
     - Update Profile: 
-        - asdf
+        - Job seekers can update their personal information and upload resume. 
     - Search Jobs: 
-        - asdf
+        - Job seekers can custom search job titles and see all the available jobs, average salary, and related topics from Google Trends. 
     - Apply: 
-        - asdf
+        - After answering employers’ questions, job seekers can apply for a job with a click of a button.
 6. Pages (Employer)
     - Post Job: 
-        - asdf
+        - Employers can post a job and add customized questions to potential applicants.
     - Receive Notification: 
-        - asdf
+        - Employers receive instant email notification upon receiving new application.
     - Dashboard:
-        - adsf
+        - Employers have a dashboard with all their job posts and the analytics.
 
 # Dependencies
 - React
